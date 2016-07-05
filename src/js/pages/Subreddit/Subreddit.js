@@ -1,7 +1,10 @@
+//react imports
 import React from "react";
 import { Link } from "react-router";
 
+//component imports
 import RedditPost from "../../components/RedditPost/RedditPost";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 import "./Subreddit.scss";
 
@@ -16,10 +19,11 @@ export default class Subreddit extends React.Component {
   }
 
   componentWillMount() {
-
+    
     const subreddit = typeof this.props.params.subreddit != 'undefined' ? "/r/" + this.props.params.subreddit : "";
 
     $.getJSON("http://www.reddit.com" + subreddit + "/.json", function(data){
+        console.log(data.data.children);
         this.setState({posts : data.data.children});
       }.bind(this));
   }
@@ -38,12 +42,12 @@ export default class Subreddit extends React.Component {
     return (
       <div>
         <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-10 columns">
+          <div class="row Subreddit-row">
+            <div class="col-md-10 Subreddit-columns">
               {this.getAllPosts()}
             </div>
-            <div class="col-md-2 columns">
-              {this.getAllPosts()}
+            <div class="col-md-2 Subreddit-columns">
+              <Sidebar />
             </div>
           </div>
         </div>

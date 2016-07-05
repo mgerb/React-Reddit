@@ -27,6 +27,7 @@ export default class RedditPost extends React.Component {
       id : post.id,
       name : post.name,
       nsfw : post.over_18,
+      permalink : post.permalink,
       subreddit : post.subreddit,
       subreddit_id : post.subreddit_id,
       url : post.url
@@ -37,20 +38,8 @@ export default class RedditPost extends React.Component {
   renderThumbnail() {
 
     if (this.state.thumbnail != "" && this.state.thumbnail != "self" && this.state.thumbnail != "nsfw"){
-
-      return  <div class="col-sm-1">
-                <div>
-                <img class="RedditPost-img" src={this.state.thumbnail} alt={this.state.thumbnail}/>
-                </div>
-              </div>;
-
+      return <img class="img-responsive pull-left" src={this.state.thumbnail} alt={this.state.thumbnail}/>
     }
-    else {
-
-      return <div class="col-sm-1"></div>
-
-    }
-
   }
 
   getTimeCreated(){
@@ -64,20 +53,17 @@ export default class RedditPost extends React.Component {
     return (
       <div class="row RedditPost-row">
 
-        <div class="col-sm-1">
-          {this.props.index + " " + this.state.ups}
+        <div class="col-md-1">
+          <div class="RedditPost-score-box">
+              <span class="RedditPost-score">{this.state.ups}</span>
+          </div>
         </div>
 
-        {this.renderThumbnail()}
-
-        <div class="col-sm-8">
+        <div class="col-sm-9">
+          {this.renderThumbnail()}
           <a href={this.state.url}>{this.state.title}</a> <span class="RedditPost-domain"> ({this.state.domain})</span>
           <p>submitted {this.getTimeCreated()} hours ago by {this.state.author} to r/{this.state.subreddit}</p>
-          <a href={this.state.comments}>{this.state.num_comments} comments</a>
-        </div>
-
-        <div class="col-sm-2">
-          <p></p>
+          <a href={this.state.permalink}>{this.state.num_comments} comments</a>
         </div>
       </div>
     );

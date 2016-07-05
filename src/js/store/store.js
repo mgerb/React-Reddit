@@ -1,29 +1,20 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
+import {applyMiddleware, createStore} from "redux";
+import {syncHistoryWithStore} from 'react-router-redux';
+import {browserHistory} from 'react-router';
+
 import logger from "redux-logger";
 
-const userReducer = (state={}, action) => {
-	switch(action.type){
-		case "TEST" : {
-			state = {...state, name : action.payload}
-			break;
-		}
-	}
+import allReducers from '../reducers/index';
 
-	return state;
+const defaultState = {
+	posts : ['testpost123'],
+	comments : ['testcomments']
 };
-
-const subredditReducer = (state={}, action) => {
-	switch(action.type){
-
-	}
-};
-
-const reducers = combineReducers({
-	user : userReducer,
-	subreddit : subredditReducer
-})
 
 const middleware = applyMiddleware(logger());
 
-const store = createStore(reducers, middleware);
+const store = createStore(allReducers, defaultState, middleware);
 
+export const history = syncHistoryWithStore(browserHistory, store);
+
+export default store;

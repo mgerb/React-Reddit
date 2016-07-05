@@ -3,3 +3,32 @@
 body {
 	background-color: $backgroundColor;
 }
+
+a {
+	color: $linkColor;
+	text-decoration: none;
+}
+
+a:hover{
+	color: $linkHoverColor;
+	text-decoration: none;
+}
+
+.fa-1{
+	font-size: 1em;
+}
+.fa-2{
+	font-size: 2em;
+}
+.fa-3{
+	font-size: 3em;
+}
+.fa-4{
+	font-size: 4em;
+}
+.fa-5{
+	font-size: 5em;
+}
+.fa-6{
+	font-size: 6em;
+}
