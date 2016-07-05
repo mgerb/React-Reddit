@@ -1,11 +1,10 @@
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
-import postReducer from './postReducer';
-import commentsReducer from './commentsReducer';
+
+import subredditReducer from './subredditReducer';
 
 const allReducers = combineReducers({
-	posts : postReducer,
-	comments : commentsReducer,
+	subreddit : subredditReducer,
 	routing : routerReducer
 });
 

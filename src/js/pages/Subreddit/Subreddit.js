@@ -1,6 +1,7 @@
 //react imports
 import React from "react";
 import { Link } from "react-router";
+import 'whatwg-fetch';
 
 //component imports
 import RedditPost from "../../components/RedditPost/RedditPost";
@@ -18,14 +19,30 @@ export default class Subreddit extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    
+    console.log(this.props.subreddit);
     
     const subreddit = typeof this.props.params.subreddit != 'undefined' ? "/r/" + this.props.params.subreddit : "";
-
-    $.getJSON("http://www.reddit.com" + subreddit + "/.json", function(data){
+    
+    fetch(`https://www.reddit.com/${subreddit}/.json`)
+      .then(response => response.json())
+      .then(json => {
+        let posts = json.data.children;
+        
+        for (let i in posts){
+          this.props.storePost(i, posts[i].data);
+        }
+        
+        console.log(json);
+      });
+    
+    /*
+    $.getJSON("https://www.reddit.com" + subreddit + "/.json", function(data){
         console.log(data.data.children);
         this.setState({posts : data.data.children});
       }.bind(this));
+    */
   }
 
   getAllPosts(){

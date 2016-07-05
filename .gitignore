@@ -1,6 +1,8 @@
 \.DS_Store
+\.c9/*
 
 client.min.js
+npm-debug.log
 
 *.key
 *.crt

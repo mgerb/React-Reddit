@@ -4,11 +4,10 @@ import {browserHistory} from 'react-router';
 
 import logger from "redux-logger";
 
-import allReducers from '../reducers/index';
+import allReducers from '../reducers/allReducers';
 
 const defaultState = {
-	posts : ['testpost123'],
-	comments : ['testcomments']
+	subreddit : {}
 };
 
 const middleware = applyMiddleware(logger());

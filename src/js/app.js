@@ -7,8 +7,8 @@ import Index from './pages/Index/Index';
 
 function mapStateToProps(state) {
   return {
-    posts: state.posts,
-    comments: state.comments
+    subreddit: state.subreddit,
+    routing: state.routing
   }
 }
 

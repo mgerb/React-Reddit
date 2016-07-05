@@ -1,6 +1,6 @@
 {
-  "name": "react-tutorials",
-  "version": "0.0.0",
+  "name": "SReddit",
+  "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
@@ -28,11 +28,15 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot --output-public-path --history-api-fallback"
+    "dev": "webpack-dev-server --content-base src --inline --hot --output-public-path --history-api-fallback",
+    "c9": "webpack-dev-server --port $PORT --host $IP --hot --content-base src --history-api-fallback",
+    "prod-linux": "export NODE_ENV=production && webpack -p",
+    "prod-windows": "set NODE_ENV=production & webpack -p"
   },
   "author": "",
   "license": "ISC"

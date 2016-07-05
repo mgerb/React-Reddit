@@ -1,7 +1,6 @@
 import {STORE_POST} from './constants';
 
-
-function store_post(index, data){
+export function storePost(index, data){
 	return {
 		type : STORE_POST,
 		index,
