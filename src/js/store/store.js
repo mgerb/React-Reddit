@@ -1,16 +1,15 @@
 import {applyMiddleware, createStore} from "redux";
 import {syncHistoryWithStore} from 'react-router-redux';
 import {browserHistory} from 'react-router';
+import thunkMiddleware from 'redux-thunk';
 
 import logger from "redux-logger";
 
 import allReducers from '../reducers/allReducers';
 
-const defaultState = {
-	subreddit : {}
-};
+const defaultState = {};
 
-const middleware = applyMiddleware(logger());
+const middleware = applyMiddleware(thunkMiddleware, logger());
 
 const store = createStore(allReducers, defaultState, middleware);
 

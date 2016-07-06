@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router';
 import "./RedditPost.scss";
 
 export default class RedditPost extends React.Component {
@@ -63,7 +64,7 @@ export default class RedditPost extends React.Component {
           {this.renderThumbnail()}
           <a href={this.state.url}>{this.state.title}</a> <span class="RedditPost-domain"> ({this.state.domain})</span>
           <p>submitted {this.getTimeCreated()} hours ago by {this.state.author} to r/{this.state.subreddit}</p>
-          <a href={this.state.permalink}>{this.state.num_comments} comments</a>
+          <Link to={this.state.permalink}>{this.state.num_comments} comments</Link>
         </div>
       </div>
     );

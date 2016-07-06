@@ -6,53 +6,55 @@ import 'whatwg-fetch';
 //component imports
 import RedditPost from "../../components/RedditPost/RedditPost";
 import Sidebar from "../../components/Sidebar/Sidebar";
-
 import "./Subreddit.scss";
 
 export default class Subreddit extends React.Component {
-
-  constructor() {
-    super();
-
-    this.state = {
-      posts : []
-    };
-  }
-
+  
   componentDidMount() {
+    const actions = this.props.actions.subreddit;
+    const props = this.props.subreddit;
+    const params = this.props.params;
     
-    console.log(this.props.subreddit);
+    const subreddit = typeof params.subreddit == 'undefined' ? '' : params.subreddit;
     
-    const subreddit = typeof this.props.params.subreddit != 'undefined' ? "/r/" + this.props.params.subreddit : "";
+    actions.setSubreddit(subreddit);
     
-    fetch(`https://www.reddit.com/${subreddit}/.json`)
-      .then(response => response.json())
-      .then(json => {
-        let posts = json.data.children;
-        
-        for (let i in posts){
-          this.props.storePost(i, posts[i].data);
-        }
-        
-        console.log(json);
-      });
+    let prefix = subreddit == '' ? '' : '/r/';
+    let path = prefix + subreddit;
     
-    /*
-    $.getJSON("https://www.reddit.com" + subreddit + "/.json", function(data){
-        console.log(data.data.children);
-        this.setState({posts : data.data.children});
-      }.bind(this));
-    */
+    actions.fetchPosts(path);
+    
   }
-
-  getAllPosts(){
-    var posts = [];
-
-    for (var i in this.state.posts){
-      posts.push(<RedditPost key={i} index={parseInt(i) + 1} post={this.state.posts[i]} />)
+  
+  //check to see if params in url changed (page changed)
+  componentWillReceiveProps(nextProps){
+    const actions = this.props.actions.subreddit;
+    const nextParams = nextProps.params;
+    const params = this.props.params;
+    
+    if(params.subreddit != nextParams.subreddit){
+      
+      const subreddit = typeof nextParams.subreddit == 'undefined' ? '' : nextParams.subreddit;
+      
+      actions.setSubreddit(subreddit);
+      
+      let prefix = subreddit == '' ? '' : '/r/';
+      let path = prefix + subreddit;
+      
+      actions.fetchPosts(path);
     }
-
-    return posts;
+    
+  }
+  
+  insertAllPosts(){
+      
+      let posts = [];
+      
+      for (let i in this.props.subreddit.posts){
+        posts.push(<RedditPost key={i} index={parseInt(i) + 1} post={this.props.subreddit.posts[i]} />);
+      }
+      
+      return posts;
   }
 
   render() {
@@ -61,7 +63,7 @@ export default class Subreddit extends React.Component {
         <div class="container-fluid">
           <div class="row Subreddit-row">
             <div class="col-md-10 Subreddit-columns">
-              {this.getAllPosts()}
+              {this.props.subreddit.fetched ? this.insertAllPosts() : null}
             </div>
             <div class="col-md-2 Subreddit-columns">
               <Sidebar />
@@ -69,7 +71,6 @@ export default class Subreddit extends React.Component {
           </div>
         </div>
       </div>
-
     );
   }
 }

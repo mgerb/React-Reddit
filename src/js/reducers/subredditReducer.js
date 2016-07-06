@@ -1,40 +1,34 @@
-import {STORE_POST} from '../actions/constants';
+import * as types from '../actions/constants';
 
 
 //----defaults---------------------------------
 const defaultSubredditState = {
-		title : "",
+		subreddit : "",
 		posts : [],
 		fetching : false,
         fetched : false
     }
 
-const defaultPostsState = [{
-			data : {},
-			comments : []
-		}];
 //----------------------------------------------
-
-
-function posts(state=defaultPostsState, action){
-    switch(action.state){
-        case STORE_POST:
-            let temp = state.slice();
-            temp[action.index].data = action.data;
-            return temp;
-    }
-    
-    return state;
-}
 
 export default function(state=defaultSubredditState, action) {
     switch (action.type){
-        case STORE_POST:
-            let temp = Object.assign({}, state, {
-                    posts : posts(state.posts, action)
+        case types.SET_SUBREDDIT:
+            return Object.assign({}, state, {
+                subreddit : action.subreddit
             });
-            
-            return temp; 
+        case types.INIT_POSTS:
+            return Object.assign({}, state, {
+                posts : action.posts,
+                fetched : true,
+                fetching : false
+            });
+        case types.FETCHING:
+            return Object.assign({}, state, {
+                fetched : false,
+                fetching : action.fetching
+            })
+        
     }
     
 	return state;

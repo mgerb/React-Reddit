@@ -16,6 +16,11 @@ $navbarHeight : 3rem;
 	border-bottom: 1px solid #f2f2f2;
 }
 
+.Navbar-navbar a:focus {
+	color: red;
+	text-decoration: none;
+}
+
 .Navbar-brand {
 	font-size: 2rem;
 }

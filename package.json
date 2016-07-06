@@ -24,6 +24,7 @@
     "react-router-redux": "^4.0.5",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
@@ -33,11 +34,11 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot --output-public-path --history-api-fallback",
-    "c9": "webpack-dev-server --port $PORT --host $IP --hot --content-base src --history-api-fallback",
+    "dev": "webpack-dev-server --content-base public --inline --hot --history-api-fallback",
+    "c9": "webpack-dev-server --port $PORT --host $IP --hot --content-base public --history-api-fallback",
     "prod-linux": "export NODE_ENV=production && webpack -p",
     "prod-windows": "set NODE_ENV=production & webpack -p"
   },
-  "author": "",
+  "author": "Mitchell Gerber",
   "license": "ISC"
 }
