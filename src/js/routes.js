@@ -10,7 +10,7 @@ import store, {history} from './store/store';
 //component imports
 import App from "./app.js";
 import Subreddit from "./pages/Subreddit/Subreddit";
-import Comments from "./pages/Comments/Comments";
+import CommentsPage from "./pages/CommentsPage/CommentsPage";
 
 const app = document.getElementById('app');
 
@@ -20,7 +20,7 @@ ReactDOM.render(
 	    <Route path="/" component={App}>
 	      <IndexRoute component={Subreddit}></IndexRoute>
 	      <Route path="/r/:subreddit" component={Subreddit}></Route>
-	      <Route path="/r/:subreddit/comments/:id/:title" component={Comments}></Route>
+	      <Route path="/r/:subreddit/comments/:id/:title" component={CommentsPage}></Route>
 	    </Route>
 	  </Router>
 	</Provider>,

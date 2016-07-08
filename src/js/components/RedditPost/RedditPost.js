@@ -4,12 +4,6 @@ import "./RedditPost.scss";
 
 export default class RedditPost extends React.Component {
 
-  constructor(){
-    super();
-
-    this.state = {};
-  }
-
   componentWillMount(){
 
     const post = this.props.post.data;
@@ -45,12 +39,14 @@ export default class RedditPost extends React.Component {
 
   getTimeCreated(){
     const date = new Date();
-    const created = new Date(this.state.created_utc * 1000);
+    const offset = date.getTimezoneOffset();
+    const created = new Date((this.state.created_utc * 1000) - offset);
 
-    return date.getHours() - created.getHours() - 1;
+    return date.getHours() - created.getHours();
   }
 
   render() {
+    
     return (
       <div class="row RedditPost-row">
 
@@ -62,8 +58,8 @@ export default class RedditPost extends React.Component {
 
         <div class="col-sm-9">
           {this.renderThumbnail()}
-          <a href={this.state.url}>{this.state.title}</a> <span class="RedditPost-domain"> ({this.state.domain})</span>
-          <p>submitted {this.getTimeCreated()} hours ago by {this.state.author} to r/{this.state.subreddit}</p>
+          <span class="RedditPost-title"><a href={this.state.url}>{this.state.title}</a></span> <span class="RedditPost-domain"> ({this.state.domain})</span>
+          <p>submitted {this.getTimeCreated()} hours ago by u/{this.state.author} to <Link to={"/r/" + this.state.subreddit}>r/{this.state.subreddit}</Link></p>
           <Link to={this.state.permalink}>{this.state.num_comments} comments</Link>
         </div>
       </div>

@@ -1,7 +1,28 @@
 @import './variables.scss';
 
+html {
+	overflow: -moz-scrollbars-vertical; 
+	overflow-y: scroll;
+}
+
 body {
 	background-color: $backgroundColor;
+}
+
+.row {
+	border-radius: $borderRadius;
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.container-fluid{
+	padding-right: $mainColumnPadding;
+	padding-left: $mainColumnPadding;
+}
+
+.Main-columns{
+	padding-right: $mainColumnPadding;
+	padding-left: $mainColumnPadding;
 }
 
 a {

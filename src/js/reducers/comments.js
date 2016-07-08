@@ -2,33 +2,29 @@ import * as types from '../actions/constants';
 
 
 //----defaults---------------------------------
-const defaultSubredditState = {
-		subreddit : "",
-		posts : [],
+const defaultCommentsState = {
+		post : {},
+		comments : [],
 		fetching : false,
         fetched : false
     }
 
 //----------------------------------------------
 
-export default function(state=defaultSubredditState, action) {
+export default function(state=defaultCommentsState, action) {
     switch (action.type){
-        case types.SET_SUBREDDIT:
+        case types.INIT_COMMENTS:
             return Object.assign({}, state, {
-                subreddit : action.subreddit
-            });
-        case types.INIT_POSTS:
-            return Object.assign({}, state, {
-                posts : action.posts,
-                fetched : true,
-                fetching : false
+                post : action.post,
+                comments : action.comments,
+                fetching : false,
+                fetched : true
             });
         case types.FETCHING:
             return Object.assign({}, state, {
                 fetched : false,
                 fetching : action.fetching
             })
-        
     }
     
 	return state;

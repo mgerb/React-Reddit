@@ -4,8 +4,9 @@
 	padding-top: .5rem;
 	padding-bottom: .5rem;
 	margin-bottom: .5rem;
+	
 	background-color: $primaryColor;
-
+	
 	border-bottom: 1px solid $borderColor;
 	border-right: 1px solid $borderColor;
 }
@@ -19,6 +20,10 @@
 	font-size: 2rem;
 	color: $scoreColor;
 	line-height: 5rem;
+}
+
+.RedditPost-title a:visited{
+	color: $linkVisitedColor;
 }
 
 .img-responsive {

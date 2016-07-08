@@ -1,16 +1,11 @@
 import * as types from './constants';
+import 'whatwg-fetch';
 
-export function initPosts(posts){
+export function initCommentsPage(comments, post){
 	return {
-		type : types.INIT_POSTS,
-		posts
-	}
-}
-
-export function setSubreddit(subreddit){
-	return {
-		type : types.SET_SUBREDDIT,
-		subreddit
+		type : types.INIT_COMMENTS,
+		comments,
+		post
 	}
 }
 
@@ -21,13 +16,16 @@ export function setFetching(fetching){
 	}
 }
 
-export function fetchPosts(path){
+export function fetchComments(path){
 	return (dispatch) => {
 		dispatch(setFetching(true));
 		return fetch(`https://www.reddit.com/${path}/.json`)
     			.then(response => response.json())
     			.then(json => {
-        			dispatch(initPosts(json.data.children));
+    				let comments = json[1].data.children;
+    				let post = json[0].data.children[0].data;
+    				
+        			dispatch(initCommentsPage(comments, post));
     			});
 	}
 }

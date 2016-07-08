@@ -6,6 +6,8 @@ import 'whatwg-fetch';
 //component imports
 import RedditPost from "../../components/RedditPost/RedditPost";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import Loading from "../../components/Loading/Loading";
+
 import "./Subreddit.scss";
 
 export default class Subreddit extends React.Component {
@@ -23,8 +25,8 @@ export default class Subreddit extends React.Component {
     let path = prefix + subreddit;
     
     actions.fetchPosts(path);
-    
   }
+  
   
   //check to see if params in url changed (page changed)
   componentWillReceiveProps(nextProps){
@@ -45,7 +47,8 @@ export default class Subreddit extends React.Component {
     }
     
   }
-  
+
+
   insertAllPosts(){
       
       let posts = [];
@@ -58,14 +61,15 @@ export default class Subreddit extends React.Component {
   }
 
   render() {
+    
     return (
       <div>
         <div class="container-fluid">
           <div class="row Subreddit-row">
-            <div class="col-md-10 Subreddit-columns">
-              {this.props.subreddit.fetched ? this.insertAllPosts() : null}
+            <div class="col-md-10 Main-columns">
+              {this.props.subreddit.fetched ? this.insertAllPosts() : <Loading/>}
             </div>
-            <div class="col-md-2 Subreddit-columns">
+            <div class="col-md-2 Main-columns">
               <Sidebar />
             </div>
           </div>
