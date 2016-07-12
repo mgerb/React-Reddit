@@ -23,7 +23,7 @@ export function fetchComments(path){
     			.then(response => response.json())
     			.then(json => {
     				let comments = json[1].data.children;
-    				let post = json[0].data.children[0].data;
+    				let post = json[0].data.children[0];
     				
         			dispatch(initCommentsPage(comments, post));
     			});

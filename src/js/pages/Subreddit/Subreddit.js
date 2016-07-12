@@ -47,19 +47,7 @@ export default class Subreddit extends React.Component {
     }
     
   }
-
-
-  insertAllPosts(){
-      
-      let posts = [];
-      
-      for (let i in this.props.subreddit.posts){
-        posts.push(<RedditPost key={i} index={parseInt(i) + 1} post={this.props.subreddit.posts[i]} />);
-      }
-      
-      return posts;
-  }
-
+  
   render() {
     
     return (
@@ -67,7 +55,17 @@ export default class Subreddit extends React.Component {
         <div class="container-fluid">
           <div class="row Subreddit-row">
             <div class="col-md-10 Main-columns">
-              {this.props.subreddit.fetched ? this.insertAllPosts() : <Loading/>}
+            <div class="row Subreddit-sortbar">
+              <div class="col-xs-12">
+                <a class="Subreddit-links" href="/">hot</a>
+                <a class="Subreddit-links" href="/">new</a>
+                <a class="Subreddit-links" href="/">rising</a>
+                <a class="Subreddit-links" href="/">controversial</a>
+                <a class="Subreddit-links" href="/">top</a>
+                <a class="Subreddit-links" href="/">gilded</a>
+              </div>
+            </div>
+              {this.props.subreddit.fetched ? this.props.subreddit.posts.map(insertPosts) : <Loading/>}
             </div>
             <div class="col-md-2 Main-columns">
               <Sidebar />
@@ -77,4 +75,8 @@ export default class Subreddit extends React.Component {
       </div>
     );
   }
+}
+
+const insertPosts = (post, i) => {
+  return <RedditPost key={i} post={post} />;
 }

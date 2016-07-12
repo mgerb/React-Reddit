@@ -1,2 +1,19 @@
 @import '../../../sass/variables.scss';
 
+.Subreddit-sortbar{
+    padding-top: .5rem;
+	padding-bottom: .5rem;
+	padding-left: 4rem;
+	
+	margin-bottom: .5rem;
+	
+	background-color: $primaryColor;
+	
+	border-bottom: 1px solid $borderColor;
+	border-right: 1px solid $borderColor;
+}
+
+.Subreddit-links{
+    padding-right: .5em;
+    padding-left: .5em;
+}

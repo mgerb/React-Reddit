@@ -19,7 +19,7 @@ ReactDOM.render(
 	  <Router history={history}>
 	    <Route path="/" component={App}>
 	      <IndexRoute component={Subreddit}></IndexRoute>
-	      <Route path="/r/:subreddit" component={Subreddit}></Route>
+	      <Route path="/r/:subreddit(/:sort)" component={Subreddit}></Route>
 	      <Route path="/r/:subreddit/comments/:id/:title" component={CommentsPage}></Route>
 	    </Route>
 	  </Router>

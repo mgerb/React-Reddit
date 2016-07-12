@@ -4,9 +4,11 @@ import { IndexLink, Link } from "react-router";
 import "./Navbar.scss";
 
 export default class Navbar extends React.Component {
-
+  
+  componentDidMount(){
+    
+  }
   render() {
-
     return (
         <div class="Navbar">
           <nav class="Navbar-navbar">

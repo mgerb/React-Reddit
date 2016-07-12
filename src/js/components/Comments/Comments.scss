@@ -2,4 +2,23 @@
 
 .Comments-row{
     background-color: $primaryColor;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: .3rem;
+}
+
+.Comments-comment .Comments-comment {
+    border-top: solid;
+    border-left: solid;
+    border-bottom: solid;
+    border-width: 1px;
+    border-radius: $borderRadius;
+    border-color: $borderColor;
+    padding-right: 0;
+    padding-bottom: .3rem;
+    margin-bottom: .2rem;
+}
+
+.Comments-alt{
+    background-color: red;
 }
