@@ -48,7 +48,7 @@ export default class RedditPost extends React.Component {
   render() {
     
     return (
-      <div class="row RedditPost-row">
+      <div class={"row RedditPost-row " + this.props.theme.module}>
 
         <div class="col-md-1">
           <div class="RedditPost-score-box">

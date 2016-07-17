@@ -1,6 +1,7 @@
 @import '../../../sass/variables.scss';
 
 .Sidebar-row{
-	background-color: $primaryColor;
 	padding: 1em;
+	border-bottom: 1px solid;
+	border-right: 1px solid;
 }

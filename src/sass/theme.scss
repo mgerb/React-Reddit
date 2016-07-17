@@ -1,0 +1,50 @@
+@import './variables.scss';
+
+//-------------------Themes--------------------
+//dark theme
+.dark {
+	background-color: $backgroundDark;
+}
+
+.dark-module{
+	background-color: $modulesDark;
+	border-color: $borderDark !important;
+}
+
+.dark-font{
+	color: $fontDark;
+}
+
+.dark-module span{
+	color: $fontDark;
+}
+
+.dark-module p{
+	color: $fontDark;
+}
+
+//--------------------------------------------
+
+//light theme
+.light {
+	background-color: $backgroundLight;
+}
+
+.light-module{
+	background-color: $modulesLight;
+	border-color: $borderLight !important;
+}
+
+.light-font{
+	color: $fontLight;
+}
+
+.light-module span{
+	color: $fontLight;
+}
+
+.light-module p{
+	color: $fontLight;
+}
+
+//---------------------------------------------

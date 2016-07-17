@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import './theme.scss';
 
 html {
 	overflow: -moz-scrollbars-vertical; 
@@ -25,7 +26,7 @@ body {
 	padding-left: $mainColumnPadding;
 }
 
-text-center{
+.text-center{
 	text-align: center;
 }
 
@@ -39,6 +40,13 @@ a:hover{
 	text-decoration: none;
 }
 
+a:focus, a:hover{
+	color: $linkFocusColor;
+	outline: none;
+	text-decoration: none;
+}
+
+//font awesome sizes
 .fa-1{
 	font-size: 1em;
 }

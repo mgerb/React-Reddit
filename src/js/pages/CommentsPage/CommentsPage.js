@@ -24,13 +24,13 @@ export default class CommentsPage extends React.Component {
     return (
       <div>
         <div class="container-fluid">
-          <div class="row Subreddit-row">
+          <div class="row Subreddit-row ">
             <div class="col-md-10 Main-columns">
-              {this.props.comments.fetched ? <RedditPost post={this.props.comments.post}/> : null}
-              {this.props.comments.fetched ? <Comments comments={this.props.comments.comments}/> : <Loading/>}
+              {this.props.comments.fetched ? <RedditPost post={this.props.comments.post} theme={this.props.app.theme}/> : null}
+              {this.props.comments.fetched ? <Comments comments={this.props.comments.comments} theme={this.props.app.theme}/> : <Loading theme={this.props.app.theme}/>}
             </div>
             <div class="col-md-2 Main-columns">
-              <Sidebar/>
+              <Sidebar toggleTheme={this.props.actions.app.toggleTheme} theme={this.props.app.theme}/>
             </div>
           </div>
         </div>

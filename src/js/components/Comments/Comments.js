@@ -8,34 +8,34 @@ import "./Comments.scss";
 export default class RedditPost extends React.Component {
   
   componentWillMount(){
-    
+    console.log(this.props)
   }
   
-  render() {
-    return (
-      <div class="row Comments-row">
-        <div class="Comments-alt">
-          {this.props.comments.map(insertComment)}
-        </div>
-      </div>
-    );
-  }
-}
-
-const insertComment = (comment, index) => {
+  insertComment = (comment, index) => {
   
   if (comment.kind == 't1'){
     
     const html = {__html : decodeHtml(comment.data.body_html.toString())};
     const author = comment.data.author, ups = comment.data.ups, time = getTimeCreated(comment.data.created_utc);
     
+    let element = "";
+    
     if(comment.data.replies != ''){
-      return <div class="col-xs-12 Comments-comment" key={index}><p>{author + " " + ups + " points " + time}</p><div dangerouslySetInnerHTML={html}/><RedditPost comments={comment.data.replies.data.children}/></div>;
-    } else {
-      return <div class="col-xs-12 Comments-comment" key={index}><div dangerouslySetInnerHTML={html}/></div>;
+        element = <RedditPost comments={comment.data.replies.data.children} theme={this.props.theme}/>;
     }
+    
+    return <div class={"col-xs-12 Comments-comment " + this.props.theme.module} key={index}><p>{author + " " + ups + " points " + time}</p><div dangerouslySetInnerHTML={html}/>{element}</div>;
   }
   
+  }
+  
+  render() {
+    return (
+      <div class={"row Comments-row " + this.props.theme.module}>
+          {this.props.comments.map(this.insertComment)}
+      </div>
+    );
+  }
 }
 
 function getTimeCreated(time){
@@ -51,25 +51,3 @@ function decodeHtml(html) {
     txt.innerHTML = html;
     return txt.value;
 }
-
-/*
-function start(children, spaces, index ){
-		if(children[index].kind == "t1"){
-			var data = children[index].data;
-
-			console.log(spaces + data.author);
-
-			if(data.replies != ""){
-				start(data.replies.data.children, spaces + " |", index);	
-			}
-
-		} else {
-				console.log(children[i].kind );
-		}
-		
-		if (typeof children[index + 1] != 'undefined'){
-			start(children, spaces, index+1);
-		}
-	
-}
-*/

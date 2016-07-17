@@ -3,11 +3,13 @@ import {routerReducer} from 'react-router-redux';
 
 import subreddit from './subreddit';
 import comments from './comments';
+import app from './app';
 
 const allReducers = combineReducers({
-	subreddit : subreddit,
+	app : app,
 	comments : comments,
-	routing : routerReducer
+	routing : routerReducer,
+	subreddit : subreddit
 });
 
 export default allReducers;

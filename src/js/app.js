@@ -6,40 +6,50 @@ import { connect } from 'react-redux';
 //import actions
 import * as subreddit from './actions/subreddit';
 import * as comments from './actions/comments';
+import * as app from './actions/app';
 
 import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
 
 import '../sass/main.scss';
 
 class Index extends Component {
 
-componentDidMount(){
-  console.log(this.props);
-}
+  componentDidMount(){
+    
+  }
+  
   render() {
+    //set background color of page
+    document.body.className = this.props.app.theme.background;
+    
     return (
       <div>
-        <Navbar />
+        <Navbar theme={this.props.app.theme}/>
           {React.cloneElement(this.props.children, this.props)}
+        <Footer theme={this.props.app.theme}/>
       </div>
 
     );
   }
 }
 
+//map redux state to props
 function mapStateToProps(state) {
   return {
-    subreddit: state.subreddit,
+    app: state.app,
     comments: state.comments,
-    routing: state.routing
+    routing: state.routing,
+    subreddit: state.subreddit
   }
 }
 
 function mapDispachToProps(dispatch) {
   return {
     actions : {
-      subreddit : bindActionCreators(subreddit, dispatch),
-      comments  : bindActionCreators(comments, dispatch)
+      app       : bindActionCreators(app, dispatch),
+      comments  : bindActionCreators(comments, dispatch),
+      subreddit : bindActionCreators(subreddit, dispatch)
     }
   }
 }

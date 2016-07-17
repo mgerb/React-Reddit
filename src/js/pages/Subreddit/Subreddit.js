@@ -7,6 +7,7 @@ import 'whatwg-fetch';
 import RedditPost from "../../components/RedditPost/RedditPost";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Loading from "../../components/Loading/Loading";
+import Sortbar from "../../components/Sortbar/Sortbar";
 
 import "./Subreddit.scss";
 
@@ -48,35 +49,26 @@ export default class Subreddit extends React.Component {
     
   }
   
+  insertPosts = (post, i) => {
+    return <RedditPost key={i} post={post} theme={this.props.app.theme}/>;
+  }
+
   render() {
-    
+    console.log(this.props);
     return (
       <div>
         <div class="container-fluid">
           <div class="row Subreddit-row">
             <div class="col-md-10 Main-columns">
-            <div class="row Subreddit-sortbar">
-              <div class="col-xs-12">
-                <a class="Subreddit-links" href="/">hot</a>
-                <a class="Subreddit-links" href="/">new</a>
-                <a class="Subreddit-links" href="/">rising</a>
-                <a class="Subreddit-links" href="/">controversial</a>
-                <a class="Subreddit-links" href="/">top</a>
-                <a class="Subreddit-links" href="/">gilded</a>
-              </div>
-            </div>
-              {this.props.subreddit.fetched ? this.props.subreddit.posts.map(insertPosts) : <Loading/>}
+              <Sortbar theme={this.props.app.theme}/>
+              {this.props.subreddit.fetched ? this.props.subreddit.posts.map(this.insertPosts) : <Loading theme={this.props.app.theme}/>}
             </div>
             <div class="col-md-2 Main-columns">
-              <Sidebar />
+              <Sidebar toggleTheme={this.props.actions.app.toggleTheme} theme={this.props.app.theme}/>
             </div>
           </div>
         </div>
       </div>
     );
   }
-}
-
-const insertPosts = (post, i) => {
-  return <RedditPost key={i} post={post} />;
 }

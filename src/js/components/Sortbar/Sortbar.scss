@@ -1,0 +1,17 @@
+@import '../../../sass/variables.scss';
+
+.Sortbar{
+    padding-top: .5rem;
+	padding-bottom: .5rem;
+	padding-left: 4rem;
+	
+	margin-bottom: .5rem;
+	
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+}
+
+.Sortbar-links{
+    padding-right: .5em;
+    padding-left: .5em;
+}

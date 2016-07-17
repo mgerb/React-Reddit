@@ -2,23 +2,12 @@
 
 $navbarHeight : 3rem;
 
-.Navbar-font-color{
-	color: $fontColor;
-}
-
 .Navbar-navbar{
 	max-height: $navbarHeight;
 	min-height: $navbarHeight;
 	margin-bottom: .5rem;
-	background-color: $primaryColor;
 	border-radius: 0px;
-	border: 0;
-	border-bottom: 1px solid #f2f2f2;
-}
-
-.Navbar-navbar a:focus {
-	color: red;
-	text-decoration: none;
+	border-bottom: 1px solid;
 }
 
 .Navbar-brand {
@@ -33,7 +22,6 @@ $navbarHeight : 3rem;
 .Navbar-text {
 	padding-left: 1rem;
 	padding-right: 1rem;
-	color: $fontColor;
 	line-height: $navbarHeight;
 }
 
