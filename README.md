@@ -1,6 +1,7 @@
 # sreddit
 This is a Reddit client that I am developing to learn both React and Redux.
 
+[Current development site located here](https://sreddit-mgerb42.c9users.io/) (may or may not be running)
 
 ## Goal
 The goal of this project is to make a Reddit client that automatically updates posts and shows live animations.
