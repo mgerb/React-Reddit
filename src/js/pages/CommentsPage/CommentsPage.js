@@ -16,6 +16,7 @@ export default class CommentsPage extends React.Component {
     
     const path = '/r/' + params.subreddit + '/comments/' + params.id + '/' + params.title;
     
+    this.props.actions.subreddit.setSubreddit(this.props.params.subreddit);
     actions.fetchComments(path);
     
 	}

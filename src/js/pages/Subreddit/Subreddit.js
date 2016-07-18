@@ -14,47 +14,36 @@ import "./Subreddit.scss";
 export default class Subreddit extends React.Component {
   
   componentDidMount() {
-    const actions = this.props.actions.subreddit;
-    const props = this.props.subreddit;
-    const params = this.props.params;
     
-    const subreddit = typeof params.subreddit == 'undefined' ? '' : params.subreddit;
-    
-    actions.setSubreddit(subreddit);
-    
-    let prefix = subreddit == '' ? '' : '/r/';
-    let path = prefix + subreddit;
-    
-    actions.fetchPosts(path);
+    this.loadPosts(this.props.params);
   }
-  
   
   //check to see if params in url changed (page changed)
   componentWillReceiveProps(nextProps){
-    const actions = this.props.actions.subreddit;
-    const nextParams = nextProps.params;
-    const params = this.props.params;
-    
-    if(params.subreddit != nextParams.subreddit){
+
+    if(this.props.params.subreddit != nextProps.params.subreddit){
       
-      const subreddit = typeof nextParams.subreddit == 'undefined' ? '' : nextParams.subreddit;
-      
-      actions.setSubreddit(subreddit);
-      
-      let prefix = subreddit == '' ? '' : '/r/';
-      let path = prefix + subreddit;
-      
-      actions.fetchPosts(path);
+      this.loadPosts(nextProps.params);
+
     }
     
   }
   
+  loadPosts(params){
+    const subreddit = typeof params.subreddit == 'undefined' ? '' : params.subreddit;
+    const sort = typeof params.sort == 'undefined' ? '' : '/' + params.sort;
+    const prefix = subreddit == '' ? '' : 'r/';
+    const path = prefix + subreddit + sort + '.json';
+
+    this.props.actions.subreddit.setSubreddit(subreddit);
+    this.props.actions.subreddit.fetchPosts(path);
+  }
+
   insertPosts = (post, i) => {
     return <RedditPost key={i} post={post} theme={this.props.app.theme}/>;
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <div class="container-fluid">

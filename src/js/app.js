@@ -25,11 +25,10 @@ class Index extends Component {
     
     return (
       <div>
-        <Navbar theme={this.props.app.theme}/>
+        <Navbar theme={this.props.app.theme} subreddit={this.props.subreddit.subreddit}/>
           {React.cloneElement(this.props.children, this.props)}
         <Footer theme={this.props.app.theme}/>
       </div>
-
     );
   }
 }

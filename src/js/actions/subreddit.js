@@ -32,7 +32,7 @@ export function setFetching(fetching){
 export function fetchPosts(path){
 	return (dispatch) => {
 		dispatch(setFetching(true));
-		return fetch(`https://www.reddit.com/${path}/.json`)
+		return fetch(`https://www.reddit.com/${path}`)
     			.then(response => response.json())
     			.then(json => {
         			dispatch(initPosts(json.data.children));

@@ -8,7 +8,6 @@ import "./Comments.scss";
 export default class RedditPost extends React.Component {
   
   componentWillMount(){
-    console.log(this.props)
   }
   
   insertComment = (comment, index) => {

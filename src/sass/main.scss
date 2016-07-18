@@ -4,10 +4,16 @@
 html {
 	overflow: -moz-scrollbars-vertical; 
 	overflow-y: scroll;
+	position: relative;
+  	min-height: 100%;
 }
 
 body {
 	background-color: $backgroundColor;
+}
+
+.active{
+	color: $linkColor;
 }
 
 .row {
