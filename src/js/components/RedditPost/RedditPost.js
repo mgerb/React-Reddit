@@ -31,7 +31,6 @@ export default class RedditPost extends React.Component {
   }
 
   renderThumbnail() {
-
     if (this.state.thumbnail != "" && this.state.thumbnail != "self" && this.state.thumbnail != "nsfw"){
       return <img class="img-responsive pull-left" src={this.state.thumbnail} alt={this.state.thumbnail}/>
     }

@@ -2,11 +2,6 @@ import React from "react";
 import "./Sortbar.scss";
 
 export default class Sortbar extends React.Component {
-  
-  componentDidMount(){
-    
-  }
-  
   render() {
     return (
         <div class={"row Sortbar " + this.props.theme.module}>

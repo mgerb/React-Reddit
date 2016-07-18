@@ -2,11 +2,6 @@ import React from "react";
 import "./Sidebar.scss";
 
 export default class RedditPost extends React.Component {
-  
-  componentDidMount(){
-    
-  }
-  
   render() {
     return (
       <div class={"row " + this.props.theme.module}>

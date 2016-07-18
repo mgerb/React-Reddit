@@ -1,15 +1,13 @@
 import * as types from '../actions/constants';
 
 
-//----defaults---------------------------------
+//defaults
 const defaultSubredditState = {
-		subreddit : "",
-		posts : [],
-		fetching : false,
-        fetched : false
-    }
-
-//----------------------------------------------
+	subreddit : "",
+	posts : [],
+	fetching : false,
+    fetched : false
+}
 
 export default function(state=defaultSubredditState, action) {
     switch (action.type){
@@ -28,8 +26,6 @@ export default function(state=defaultSubredditState, action) {
                 fetched : false,
                 fetching : action.fetching
             });
-        
     }
-    
 	return state;
 }

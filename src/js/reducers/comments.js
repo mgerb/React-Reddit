@@ -1,15 +1,13 @@
 import * as types from '../actions/constants';
 
 
-//----defaults---------------------------------
+//defaults
 const defaultCommentsState = {
-		post : {},
-		comments : [],
-		fetching : false,
-        fetched : false
-    }
-
-//----------------------------------------------
+	post : {},
+	comments : [],
+	fetching : false,
+    fetched : false
+}
 
 export default function(state=defaultCommentsState, action) {
     switch (action.type){
@@ -26,6 +24,5 @@ export default function(state=defaultCommentsState, action) {
                 fetching : action.fetching
             })
     }
-    
 	return state;
 }

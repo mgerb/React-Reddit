@@ -13,20 +13,16 @@ import "./Subreddit.scss";
 
 export default class Subreddit extends React.Component {
   
+  //load initial posts
   componentDidMount() {
-    
     this.loadPosts(this.props.params);
   }
   
   //check to see if params in url changed (page changed)
   componentWillReceiveProps(nextProps){
-
     if(this.props.params.subreddit != nextProps.params.subreddit){
-      
       this.loadPosts(nextProps.params);
-
-    }
-    
+    } 
   }
   
   loadPosts(params){

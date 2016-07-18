@@ -14,12 +14,9 @@ import Footer from './components/Footer/Footer';
 import '../sass/main.scss';
 
 class Index extends Component {
-
-  componentDidMount(){
-    
-  }
   
   render() {
+
     //set background color of page
     document.body.className = this.props.app.theme.background;
     
@@ -31,6 +28,7 @@ class Index extends Component {
       </div>
     );
   }
+  
 }
 
 //map redux state to props

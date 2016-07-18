@@ -18,7 +18,6 @@ export default class CommentsPage extends React.Component {
     
     this.props.actions.subreddit.setSubreddit(this.props.params.subreddit);
     actions.fetchComments(path);
-    
 	}
 	
   render() {

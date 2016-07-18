@@ -7,25 +7,19 @@ import "./Comments.scss";
 
 export default class RedditPost extends React.Component {
   
-  componentWillMount(){
-  }
-  
   insertComment = (comment, index) => {
-  
-  if (comment.kind == 't1'){
-    
-    const html = {__html : decodeHtml(comment.data.body_html.toString())};
-    const author = comment.data.author, ups = comment.data.ups, time = getTimeCreated(comment.data.created_utc);
-    
-    let element = "";
-    
-    if(comment.data.replies != ''){
-        element = <RedditPost comments={comment.data.replies.data.children} theme={this.props.theme}/>;
+    if (comment.kind == 't1'){
+      
+      const html = {__html : decodeHtml(comment.data.body_html.toString())};
+      const author = comment.data.author, ups = comment.data.ups, time = getTimeCreated(comment.data.created_utc);
+      let element = "";
+      
+      if(comment.data.replies != ''){
+          element = <RedditPost comments={comment.data.replies.data.children} theme={this.props.theme}/>;
+      }
+      
+      return <div class={"col-xs-12 Comments-comment " + this.props.theme.module} key={index}><p>{author + " " + ups + " points " + time}</p><div dangerouslySetInnerHTML={html}/>{element}</div>;
     }
-    
-    return <div class={"col-xs-12 Comments-comment " + this.props.theme.module} key={index}><p>{author + " " + ups + " points " + time}</p><div dangerouslySetInnerHTML={html}/>{element}</div>;
-  }
-  
   }
   
   render() {

@@ -1,16 +1,14 @@
 import * as types from '../actions/constants';
 
 
-//----defaults---------------------------------
+//defaults
 const defaultAppState = {
-		theme : {
-		    background : "light",
-		    module : "light-module",
-		    font : "light-font"
-		}
-    }
-
-//----------------------------------------------
+	theme : {
+	    background : "light",
+	    module : "light-module",
+	    font : "light-font"
+	}
+}
 
 export default function(state=defaultAppState, action) {
     switch (action.type){

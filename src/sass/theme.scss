@@ -1,6 +1,5 @@
 @import './variables.scss';
 
-//-------------------Themes--------------------
 //dark theme
 .dark {
 	background-color: $backgroundDark;
@@ -21,9 +20,6 @@
 	color: $fontDark;
 }
 
-
-//--------------------------------------------
-
 //light theme
 .light {
 	background-color: $backgroundLight;
@@ -43,5 +39,3 @@
 .light-module label{
 	color: $fontLight;
 }
-
-//---------------------------------------------
