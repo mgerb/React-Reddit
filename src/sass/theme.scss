@@ -15,13 +15,12 @@
 	color: $fontDark;
 }
 
-.dark-module span{
+.dark-module span, 
+.dark-module p,
+.dark-module label{
 	color: $fontDark;
 }
 
-.dark-module p{
-	color: $fontDark;
-}
 
 //--------------------------------------------
 
@@ -39,11 +38,9 @@
 	color: $fontLight;
 }
 
-.light-module span{
-	color: $fontLight;
-}
-
-.light-module p{
+.light-module span, 
+.light-module p,
+.light-module label{
 	color: $fontLight;
 }
 

@@ -1,5 +1,5 @@
 # sreddit
-This is a Reddit client that I am developing to learn both React and Redux.
+This is a Reddit client that I am developing to learn both React and Redux as well as ES6.
 
 [Current development site located here](https://sreddit-mgerb42.c9users.io/) (may or may not be running)
 
@@ -27,6 +27,10 @@ Add options to side bar:
     - styling for posts/comments
     
         - smooth scroll between comments
+        
+    - get rid of jquery (use bootstrap without jquery)
+    
+    - move all css imports within js
         
     - set up backend with Go
     

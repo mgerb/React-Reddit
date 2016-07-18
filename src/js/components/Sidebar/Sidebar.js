@@ -9,9 +9,9 @@ export default class RedditPost extends React.Component {
   
   render() {
     return (
-      <div class={"row Sidebar-row " + this.props.theme.module}>
+      <div class={"row " + this.props.theme.module}>
         <div class="col-lg-12 ">
-        <span>Dark Theme </span>
+        <label for="themeCheckBox" class="Sidebar-label">Dark Theme</label>
         <input type="checkbox" id="themeCheckBox" checked={this.props.theme.background == 'dark' ? true : false} onChange={this.props.toggleTheme}/>
           <hr/>
         </div>
