@@ -10,6 +10,13 @@ $navbarHeight: 3rem;
     border-bottom: 1px solid;
 }
 
+.Navbar-navbar a:focus,
+.Navbar-navbar a:hover {
+    color: $linkFocusColor;
+    outline: none;
+    text-decoration: none;
+}
+
 .Navbar-brand {
     font-size: 2rem;
 }

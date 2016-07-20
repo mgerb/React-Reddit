@@ -1,5 +1,7 @@
 import React from "react";
 import {Link} from 'react-router';
+import moment from 'moment';
+
 import "./RedditPost.scss";
 
 export default class RedditPost extends React.Component {
@@ -37,11 +39,9 @@ export default class RedditPost extends React.Component {
   }
 
   getTimeCreated(){
-    const date = new Date();
-    const offset = date.getTimezoneOffset();
-    const created = new Date((this.state.created_utc * 1000) - offset);
-
-    return date.getHours() - created.getHours();
+    const offset = Date.now() - (this.state.created_utc * 1000);
+    const hours = Math.floor(offset/1000/60/60);
+    return moment.duration(hours, 'hours').humanize(); 
   }
 
   render() {
@@ -58,7 +58,7 @@ export default class RedditPost extends React.Component {
         <div class="col-sm-9">
           {this.renderThumbnail()}
           <span class="RedditPost-title"><a href={this.state.url}>{this.state.title}</a></span> <span class="RedditPost-domain"> ({this.state.domain})</span>
-          <p>submitted {this.getTimeCreated()} hours ago by u/{this.state.author} to <Link to={"/r/" + this.state.subreddit}>r/{this.state.subreddit}</Link></p>
+          <p>submitted {this.getTimeCreated()} ago by <a href={"https://reddit.com/user/" + this.state.author} target="_blank">u/{this.state.author}</a> to <Link to={"/r/" + this.state.subreddit}>r/{this.state.subreddit}</Link></p>
           <Link to={this.state.permalink}>{this.state.num_comments} comments</Link>
         </div>
       </div>

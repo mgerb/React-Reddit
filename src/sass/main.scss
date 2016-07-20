@@ -50,11 +50,9 @@ a:hover {
     text-decoration: none;
 }
 
-a:focus,
-a:hover {
-    color: $linkFocusColor;
-    outline: none;
+a:focus {
     text-decoration: none;
+    color: $linkHoverColor;
 }
 
 //font awesome sizes

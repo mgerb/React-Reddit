@@ -4,16 +4,22 @@
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 0.5rem;
-    padding-top: .3rem;
 }
 
-.Comments-comment .Comments-comment {
-    border-top: solid;
+.Comments-comment {
+    border-top: none;
     border-left: solid;
-    border-bottom: solid;
-    border-width: 1px;
+    border-bottom: none;
+    border-width: 2px;
     border-radius: $borderRadius;
-    padding-right: 0;
     padding-bottom: .3rem;
-    margin-bottom: .2rem;
+    padding-top: .5rem;
+}
+
+.Comments-score{
+    font-weight: 600;
+}
+
+.Comments-timestamp{
+    font-size: 12px;
 }

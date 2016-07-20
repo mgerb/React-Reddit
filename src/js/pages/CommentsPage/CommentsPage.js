@@ -27,7 +27,7 @@ export default class CommentsPage extends React.Component {
           <div class="row Subreddit-row ">
             <div class="col-md-10 Main-columns">
               {this.props.comments.fetched ? <RedditPost post={this.props.comments.post} theme={this.props.app.theme}/> : null}
-              {this.props.comments.fetched ? <Comments comments={this.props.comments.comments} theme={this.props.app.theme}/> : <Loading theme={this.props.app.theme}/>}
+              {this.props.comments.fetched ? <Comments comments={this.props.comments.comments} alt={false} theme={this.props.app.theme}/> : <Loading theme={this.props.app.theme}/>}
             </div>
             <div class="col-md-2 Main-columns">
               <Sidebar toggleTheme={this.props.actions.app.toggleTheme} theme={this.props.app.theme}/>

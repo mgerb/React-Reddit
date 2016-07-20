@@ -9,45 +9,39 @@ The goal of this project is to make a Reddit client that automatically updates p
 
 ## ToDo
 
+- subreddit page
+	- ~~add paging~~
+	- ~~allow users to change color scheme~~
+		- store in browser
+	- fix state on redditpost.js
+	- Add options to side bar
+	- select amount of posts to load per page
+	- quick view of posts and photos
+	- live updating posts/comments
+	- top bar to filter posts
+
 - comments page
+	-alternate background color between comments
 	- load more comments
 	- smooth scroll between leading comments
-	- fix time stamps
-	
-- fix state on redditpost.js
+	- add word cloud to comments page
+	- smooth scroll between comments
 
-- Add options to side bar
+- add user information page
 
-- ~~allow users to change color scheme~~
-	- store in browser
-
-- select amount of posts to load per page
-
-- add word cloud to comments page
-
-- ~~add paging~~
-
-- quick view of posts and photos
-
-- live updating posts/comments
-
-- top bar to filter posts
-
-- localstorage - maybe look into localforage
-
-- styling for posts/comments
-
-    - smooth scroll between comments
+- other
+	- ~~fix time stamps~~
+	- get new font
+	- localstorage - maybe look into localforage
+	- styling for posts/comments
+    - get rid of jquery (use bootstrap without jquery)
+	- move all css imports within js
+	- configure webpack for html generation
+	- refactor theme css
     
-- get rid of jquery (use bootstrap without jquery)
-
-- move all css imports within js
-
-- configure webpack for html generation
-    
-- set up backend with Go
-
-- run on app engine
+- server side
+	- set up backend with Go
+	- run on app engine
 
 - ...more to come
 

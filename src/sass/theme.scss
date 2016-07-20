@@ -20,6 +20,10 @@
     color: $fontDark;
 }
 
+.dark-alt-comment {
+    background-color: $darkAltComment;
+}
+
 //light theme
 .light {
     background-color: $backgroundLight;
@@ -38,4 +42,8 @@
 .light-module p,
 .light-module label {
     color: $fontLight;
+}
+
+.light-alt-comment{
+    background-color: $lightAltComment;
 }

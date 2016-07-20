@@ -3,22 +3,24 @@ $backgroundColor: #e6e6e6;
 $borderColor: #e2e2e2;
 $fontColor: #808080;
 $linkColor: #00aaff;
-$linkHoverColor: red;
+$linkHoverColor: #a6a6a6;
 $linkFocusColor: #00aaff;
 $linkVisitedColor: #00334d;
 $scoreColor: #d27979;
 $borderRadius: .2rem;
 $footerHeight: 5rem;
+$mainColumnPadding: .3rem;
 
 //variables for dark theme
 $backgroundDark: #8c8c8c;
 $modulesDark: #595959;
 $fontDark: #d9d9d9;
 $borderDark: #999999;
-//variables for light theme
+$darkAltComment: #666666;
 
+//variables for light theme
 $backgroundLight: #e6e6e6;
 $modulesLight: white;
 $fontLight: #808080;
 $borderLight: #f2f2f2;
-$mainColumnPadding: .3rem;
+$lightAltComment: #FCFCFC;
