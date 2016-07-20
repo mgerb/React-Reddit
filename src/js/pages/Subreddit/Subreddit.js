@@ -18,9 +18,16 @@ export default class Subreddit extends React.Component {
     this.loadPosts(this.props.params);
 
     const bottom = document.getElementById('bottom');
-    
+
+    const that = this;
+
+    window.addEventListener('scroll', this.scrollListener);
   }
-  
+
+  componentWillUnmount(){
+    window.removeEventListener('scroll', this.scrollListener);
+  }
+
   //check to see if params in url changed (page changed)
   componentWillReceiveProps(nextProps){
     if(this.props.params.subreddit != nextProps.params.subreddit){
@@ -52,27 +59,17 @@ export default class Subreddit extends React.Component {
     this.props.actions.subreddit.fetchMorePosts(path, query);
   }
 
-  //check if scrolled to bottom of page to load more posts
-  isScrolledIntoView(el) {
-    var elemTop = el.getBoundingClientRect().top;
-    var elemBottom = el.getBoundingClientRect().bottom;
-
-    var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
-    return isVisible;
-  }
-
   insertPosts = (post, i) => {
     return <RedditPost key={i} post={post} theme={this.props.app.theme}/>;
   }
 
+  scrollListener = () => {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight && !this.props.subreddit.fetchingMore) {
+      this.loadMorePosts();
+    }
+  }
+
   render() {
-
-    setInterval(() => {
-      if(this.isScrolledIntoView(bottom) && this.props.subreddit.fetched && !this.props.subreddit.fetchingMore){
-        this.loadMorePosts();
-      }
-    }, 200);
-
     return (
       <div>
         <div class="container-fluid">
@@ -80,7 +77,7 @@ export default class Subreddit extends React.Component {
             <div class="col-md-10 Main-columns">
               <Sortbar theme={this.props.app.theme}/>
               {this.props.subreddit.fetched ? this.props.subreddit.posts.map(this.insertPosts) : <Loading theme={this.props.app.theme}/>}
-              {this.props.subreddit.fetchingMore ? <Loading theme={this.props.app.theme}/>: null}
+              {this.props.subreddit.fetchingMore && !this.props.subreddit.fetching ? <Loading theme={this.props.app.theme}/>: null}
             </div>
             <div class="col-md-2 Main-columns">
               <Sidebar toggleTheme={this.props.actions.app.toggleTheme} theme={this.props.app.theme}/>

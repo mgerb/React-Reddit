@@ -2,40 +2,40 @@
 
 //dark theme
 .dark {
-	background-color: $backgroundDark;
+    background-color: $backgroundDark;
 }
 
-.dark-module{
-	background-color: $modulesDark;
-	border-color: $borderDark !important;
+.dark-module {
+    background-color: $modulesDark;
+    border-color: $borderDark !important;
 }
 
-.dark-font{
-	color: $fontDark;
+.dark-font {
+    color: $fontDark;
 }
 
-.dark-module span, 
+.dark-module span,
 .dark-module p,
-.dark-module label{
-	color: $fontDark;
+.dark-module label {
+    color: $fontDark;
 }
 
 //light theme
 .light {
-	background-color: $backgroundLight;
+    background-color: $backgroundLight;
 }
 
-.light-module{
-	background-color: $modulesLight;
-	border-color: $borderLight !important;
+.light-module {
+    background-color: $modulesLight;
+    border-color: $borderLight !important;
 }
 
-.light-font{
-	color: $fontLight;
+.light-font {
+    color: $fontLight;
 }
 
-.light-module span, 
+.light-module span,
 .light-module p,
-.light-module label{
-	color: $fontLight;
+.light-module label {
+    color: $fontLight;
 }

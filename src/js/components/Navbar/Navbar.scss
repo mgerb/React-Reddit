@@ -1,34 +1,34 @@
 @import '../../../sass/variables.scss';
 
-$navbarHeight : 3rem;
+$navbarHeight: 3rem;
 
-.Navbar-navbar{
-	max-height: $navbarHeight;
-	min-height: $navbarHeight;
-	margin-bottom: .5rem;
-	border-radius: 0px;
-	border-bottom: 1px solid;
+.Navbar-navbar {
+    max-height: $navbarHeight;
+    min-height: $navbarHeight;
+    margin-bottom: .5rem;
+    border-radius: 0px;
+    border-bottom: 1px solid;
 }
 
 .Navbar-brand {
-	font-size: 2rem;
+    font-size: 2rem;
 }
 
-.Navbar-container{
-	padding-left: 4rem;
-	padding-right: 4rem;
+.Navbar-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
 }
 
 .Navbar-text {
-	padding-left: 1rem;
-	padding-right: 1rem;
-	line-height: $navbarHeight;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    line-height: $navbarHeight;
 }
 
-.Navbar-right{
-	float: right;
+.Navbar-right {
+    float: right;
 }
 
-.Navbar-left{
-	float: left;
+.Navbar-left {
+    float: left;
 }
