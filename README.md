@@ -23,6 +23,8 @@ The goal of this project is to make a Reddit client that automatically updates p
 
 - select amount of posts to load per page
 
+- add word cloud to comments page
+
 - ~~add paging~~
 
 - quick view of posts and photos
