@@ -34,9 +34,9 @@ The goal of this project is to make a Reddit client that automatically updates p
 	- get new font
 	- localstorage - maybe look into localforage
 	- styling for posts/comments
-    - get rid of jquery (use bootstrap without jquery)
-	- move all css imports within js
-	- configure webpack for html generation
+    - ~~get rid of jquery (use bootstrap without jquery)~~
+	- ~~move all css imports within js~~
+	- ~~configure webpack for html generation~~
 	- refactor theme css
     
 - server side
