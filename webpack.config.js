@@ -1,11 +1,12 @@
 var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  context: path.join(__dirname, "src"),
   devtool: debug ? "inline-sourcemap" : null,
-  entry: "./js/routes.js",
+  entry: "./src/js/routes.js",
   module: {
     loaders: [
       {
@@ -19,17 +20,18 @@ module.exports = {
       },
       { test: /\.scss$/, loader: "style-loader!css-loader!sass-loader"},
       { test: /\.css$/, loader: "style-loader!css-loader" },
-      { test: /\.png$/, loader: "url-loader?limit=100000" },
-      { test: /\.jpg$/, loader: "file-loader" },
-      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
-      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream"},
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file"},
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"}
+      { test: /\.png$/, loader: "url-loader?limit=100000&name=images/[hash].[ext]" },
+      { test: /\.jpg$/, loader: "url-loader?limit=100000&name=images/[hash].[ext]" },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml&name=images/[hash].[ext]"},
+      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff&name=fonts/[hash].[ext]"},
+      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff&name=fonts/[hash].[ext]"},
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream&name=fonts/[hash].[ext]"},
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file?name=fonts/[hash].[ext]"}
     ]
   },
   output: {
-    path: __dirname + "/public/",
+    path: __dirname + "/dist/",
+    publicPath: "/",
     filename: "client.min.js"
   },
   plugins: debug ? [] : [
@@ -37,4 +39,12 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
   ],
+  plugins: [
+    new HtmlWebpackPlugin({
+      fileName: 'index.html',
+      template: 'index.html',
+      inject: 'body',
+      hash: true
+    })  
+  ]
 };

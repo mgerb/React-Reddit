@@ -11,6 +11,9 @@ import * as app from './actions/app';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../../node_modules/font-awesome/css/font-awesome.min.css';
+
 import '../sass/main.scss';
 
 class Index extends Component {
