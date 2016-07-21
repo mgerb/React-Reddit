@@ -26,7 +26,7 @@ export default class Navbar extends React.Component {
                 })}
                 
                 <div class="Navbar-text Navbar-right">
-                  <a href="https://github.com/mgerb42/sreddit" class={font} target="_blank">
+                  <a href="https://github.com/mgerb/sreddit" class={font} target="_blank">
                     <i class="fa fa-github fa-2 " aria-hidden="true"></i>
                   </a>
                 </div>
