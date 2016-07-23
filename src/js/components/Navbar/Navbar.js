@@ -10,16 +10,14 @@ export default class Navbar extends React.Component {
     const module = this.props.theme.module;
     const font = this.props.theme.font;
     const defaultSubreddits = ['all', 'multicopter', 'fpv',];
-
-    let active = this.props.subreddit == '' ? 'active' : '';
-
+    let active = this.props.subreddit === '' ? 'active' : '';
+    
     return (
           <nav class={"Navbar-navbar " + module}>
             <div class="Navbar-container">
                 <Link id="frontpage" to="/" class={"Navbar-brand Navbar-text Navbar-left " + font + " " + active}>SReddit</Link>
 
                 {defaultSubreddits.map((subreddit, index) => {
-
                   this.props.subreddit.toUpperCase() == subreddit.toUpperCase() ? active = 'active' : active = '';
 
                   return <Link to={"/r/" + subreddit} id={subreddit} key={index} class={"Navbar-text Navbar-left " + font + " " + active}>{subreddit}</Link>

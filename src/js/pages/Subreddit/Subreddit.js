@@ -1,15 +1,16 @@
 //react imports
-import React from "react";
-import { Link } from "react-router";
+import React from 'react';
+import { Link } from 'react-router';
 import 'whatwg-fetch';
 
 //component imports
-import RedditPost from "../../components/RedditPost/RedditPost";
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Loading from "../../components/Loading/Loading";
-import Sortbar from "../../components/Sortbar/Sortbar";
+import RedditPost from '../../components/RedditPost/RedditPost';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import Loading from '../../components/Loading/Loading';
+import Sortbar from '../../components/Sortbar/Sortbar';
+import queryParams from '../../utils/queryParams';
 
-import "./Subreddit.scss";
+import './Subreddit.scss';
 
 export default class Subreddit extends React.Component {
   
@@ -18,8 +19,6 @@ export default class Subreddit extends React.Component {
     this.loadPosts(this.props.params);
 
     const bottom = document.getElementById('bottom');
-
-    const that = this;
 
     window.addEventListener('scroll', this.scrollListener);
   }
@@ -35,28 +34,35 @@ export default class Subreddit extends React.Component {
     } 
   }
   
-  //TODO add functionality for query paramters to sort posts
   loadPosts(params){
-    const subreddit = typeof params.subreddit == 'undefined' ? '' : params.subreddit;
-    const sort = typeof params.sort == 'undefined' ? '' : '/' + params.sort;
-    const prefix = subreddit == '' ? '' : 'r/';
-    const path = prefix + subreddit + sort;
-
+    const url = new queryParams();
+    let subreddit = params.subreddit;
+    typeof subreddit !== 'undefined' ? url.pushParam('r') : subreddit = '';
+    url.pushParam(params.subreddit);
+    url.pushParam(params.sort);
+    Object.keys(this.props.location.query).forEach((key,index) => {
+      url.pushQueryParam(key, this.props.location.query[key]);
+    });
+    
     this.props.actions.subreddit.setSubreddit(subreddit);
-    this.props.actions.subreddit.fetchPosts(path);
+    this.props.actions.subreddit.fetchPosts(url.toString());
   }
 
-  loadMorePosts(){
-    const params = this.props.params;
-    const subreddit = typeof params.subreddit == 'undefined' ? '' : params.subreddit;
-    const sort = typeof params.sort == 'undefined' ? '' : '/' + params.sort;
-    const prefix = subreddit == '' ? '' : 'r/';
-    const path = prefix + subreddit + sort;
-
-    const name = this.props.subreddit.posts[this.props.subreddit.posts.length - 1].data.name;
-    let query = 'after=' + name;
-
-    this.props.actions.subreddit.fetchMorePosts(path, query);
+  loadMorePosts(params){
+    if (this.props.subreddit.fetched){
+      const url = new queryParams();
+      let subreddit = params.subreddit;
+      typeof subreddit !== 'undefined' ? url.pushParam('r') : subreddit = '';
+      url.pushParam(params.subreddit);
+      url.pushParam(params.sort);
+      Object.keys(this.props.location.query).forEach((key,index) => {
+        url.pushQueryParam(key, this.props.location.query[key]);
+      });
+      const name = this.props.subreddit.posts[this.props.subreddit.posts.length - 1].data.name;
+      url.pushQueryParam('after', name);
+  
+      this.props.actions.subreddit.fetchMorePosts(url.toString());
+    }
   }
 
   insertPosts = (post, i) => {
@@ -65,22 +71,31 @@ export default class Subreddit extends React.Component {
 
   scrollListener = () => {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight && !this.props.subreddit.fetchingMore) {
-      this.loadMorePosts();
+      this.loadMorePosts(this.props.params);
     }
   }
 
   render() {
+    const errorFetching = this.props.subreddit.errorFetching;
+    const posts = this.props.subreddit.posts;
+    const fetched = this.props.subreddit.fetched;
+    const fetching = this.props.subreddit.fetching;
+    const fetchingMore = this.props.subreddit.fetchingMore;
+    const theme = this.props.app.theme;
+    const toggleTheme = this.props.actions.app.toggleTheme;
+    
     return (
       <div>
         <div class="container-fluid">
           <div class="row Subreddit-row">
             <div class="col-md-10 Main-columns">
-              <Sortbar theme={this.props.app.theme}/>
-              {this.props.subreddit.fetched ? this.props.subreddit.posts.map(this.insertPosts) : <Loading theme={this.props.app.theme}/>}
-              {this.props.subreddit.fetchingMore && !this.props.subreddit.fetching ? <Loading theme={this.props.app.theme}/>: null}
+              <Sortbar theme={theme}/>
+              {errorFetching ? <div>Error fetching posts</div> : ""}
+              {fetched ? posts.map(this.insertPosts) : <Loading theme={theme}/>}
+              {fetchingMore && !fetching ? <Loading theme={theme}/>: null}
             </div>
             <div class="col-md-2 Main-columns">
-              <Sidebar toggleTheme={this.props.actions.app.toggleTheme} theme={this.props.app.theme}/>
+              <Sidebar toggleTheme={toggleTheme} theme={theme}/>
             </div>
           </div>
         </div>

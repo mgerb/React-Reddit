@@ -1,6 +1,13 @@
 import * as types from './constants';
 import 'whatwg-fetch';
 
+export function errorFetching(bool){
+    return {
+        type: types.ERROR_FETCHING,
+        bool
+    }
+}
+
 function initPosts(posts) {
     return {
         type: types.INIT_POSTS,
@@ -39,10 +46,14 @@ export function setFetchingMore(fetchingMore) {
 export function fetchPosts(path, params) {
     return (dispatch) => {
         dispatch(setFetching(true));
-        return fetch(`https://www.reddit.com/${path}.json?${params}`)
+        return fetch(`https://www.reddit.com${path}`)
             .then(response => response.json())
             .then(json => {
-                dispatch(initPosts(json.data.children));
+                json.error === 404 ? dispatch(errorFetching(true)) : dispatch(initPosts(json.data.children));
+            })
+            .catch(error => {
+                console.log(error);
+                dispatch(errorFetching(true));
             });
     }
 }
@@ -50,10 +61,14 @@ export function fetchPosts(path, params) {
 export function fetchMorePosts(path, params) {
     return (dispatch) => {
         dispatch(setFetchingMore(true));
-        return fetch(`https://www.reddit.com/${path}.json?${params}`)
+        return fetch(`https://www.reddit.com/${path}`)
             .then(response => response.json())
             .then(json => {
-                dispatch(loadMorePosts(json.data.children));
+                json.error === 404 ? dispatch(errorFetching(true)) : dispatch(loadMorePosts(json.data.children));
+            })
+            .catch(error => {
+                console.log(error);
+                dispatch(errorFetching(true));
             });
     }
 }

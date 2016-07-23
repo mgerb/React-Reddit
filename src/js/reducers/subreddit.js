@@ -1,10 +1,10 @@
 import * as types from '../actions/constants';
 
-
 //defaults
 const defaultSubredditState = {
     subreddit: "",
     posts: [],
+    errorFetching: false,
     fetching: false,
     fetched: false,
     fetchingMore: false,
@@ -25,6 +25,7 @@ export default function(state = defaultSubredditState, action) {
             });
         case types.FETCHING:
             return Object.assign({}, state, {
+                errorFetching: false,
                 fetched: false,
                 fetching: action.fetching
             });
@@ -38,6 +39,14 @@ export default function(state = defaultSubredditState, action) {
                 posts: [...state.posts, ...action.posts],
                 fetchedMore: true,
                 fetchingMore: false
+            });
+        case types.ERROR_FETCHING:
+            return Object.assign({}, state, {
+                errorFetching: action.bool,
+                fetching: false,
+                fetchingMore: false,
+                fetched: true,
+                fetchedMore: true
             });
     }
     return state;

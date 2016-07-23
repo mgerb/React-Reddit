@@ -18,18 +18,19 @@ The goal of this project is to make a Reddit client that automatically updates p
 	- select amount of posts to load per page
 	- quick view of posts and photos
 	- live updating posts/comments
-	- top bar to filter posts
+	- ~~top bar to filter posts~~
+	    - add filter menu
 
 - comments page
-	-alternate background color between comments
+	- ~~alternate background color between comments~~
 	- load more comments
 	- smooth scroll between leading comments
 	- add word cloud to comments page
-	- smooth scroll between comments
 
 - add user information page
 
 - other
+    - ~~add query string mapping~~
 	- ~~fix time stamps~~
 	- get new font
 	- localstorage - maybe look into localforage
