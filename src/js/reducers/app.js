@@ -1,40 +1,41 @@
 import * as types from '../actions/constants';
 
-
-//defaults
-const defaultAppState = {
-    theme: {
+const lightTheme = {
         background: "light",
         module: "light-module",
         font: "light-font",
         altComment: "light-alt-comment"
-    }
 }
 
-export default function(state = defaultAppState, action) {
+const darkTheme = {
+        background: "dark",
+        module: "dark-module",
+        font: "dark-font",
+        altComment: "dark-alt-comment"
+}
+
+//defaults
+const defaults = {
+    theme : lightTheme
+}
+
+function initDefaults(){
+    const theme = localStorage.getItem('theme');
+    
+    if(theme !== null){
+        defaults.theme = JSON.parse(theme);
+    }
+    return defaults;
+}
+
+export default function(state = initDefaults(), action) {
     switch (action.type) {
         case types.TOGGLE_THEME:
-
-            let altComment, background, module, font;
-
-            if (state.theme.background == "light") {
-                background = "dark";
-                module = "dark-module";
-                font = "dark-font";
-                altComment = "dark-alt-comment";
-            } else {
-                background = "light";
-                module = "light-module";
-                font = "light-font";
-                altComment = "light-alt-comment";
-            }
+            const theme = state.theme.background === 'light' ? darkTheme : lightTheme;
+            localStorage.setItem('theme', JSON.stringify(theme));
+            
             return Object.assign({}, state, {
-                theme: Object.assign({}, state.theme, {
-                    background: background,
-                    module: module,
-                    font: font,
-                    altComment: altComment
-                })
+                theme: Object.assign({}, state.theme, theme)
             });
     }
 

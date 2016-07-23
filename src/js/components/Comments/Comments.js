@@ -46,7 +46,7 @@ export default class RedditPost extends React.Component {
 
   render() {
     return (
-      <div class={"row Comments-row " + this.props.theme.module}>
+      <div class={"row Comments-row "}>
           {this.props.comments.map(this.insertComment)}
       </div>
     );

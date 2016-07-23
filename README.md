@@ -33,7 +33,7 @@ The goal of this project is to make a Reddit client that automatically updates p
     - ~~add query string mapping~~
 	- ~~fix time stamps~~
 	- get new font
-	- localstorage - maybe look into localforage
+	- ~~localstorage~~ - maybe look into localforage
 	- styling for posts/comments
     - ~~get rid of jquery (use bootstrap without jquery)~~
 	- ~~move all css imports within js~~
