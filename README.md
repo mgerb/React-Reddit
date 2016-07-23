@@ -12,7 +12,7 @@ The goal of this project is to make a Reddit client that automatically updates p
 - subreddit page
 	- ~~add paging~~
 	- ~~allow users to change color scheme~~
-		- store in browser
+		- ~~store in browser~~
 	- fix state on redditpost.js
 	- Add options to side bar
 	- select amount of posts to load per page
