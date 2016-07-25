@@ -19,7 +19,9 @@ The goal of this project is to make a Reddit client that automatically updates p
 	- quick view of posts and photos
 	- live updating posts/comments
 	- ~~top bar to filter posts~~
-	    - add filter menu
+	    - ~~add filter menu~~
+	    - more css - change to drop down menu
+	    - active link functionality
 
 - comments page
 	- ~~alternate background color between comments~~

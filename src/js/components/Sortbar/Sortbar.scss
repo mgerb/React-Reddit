@@ -9,7 +9,18 @@
     border-right: 1px solid;
 }
 
+.Sortbar a:focus,
+.Sortbar a:hover {
+    color: $linkFocusColor !important;
+    outline: none;
+    text-decoration: none;
+}
+
 .Sortbar-links {
     padding-right: .5em;
     padding-left: .5em;
+}
+
+.Sortbar-sort{
+    font-size: 10px;
 }

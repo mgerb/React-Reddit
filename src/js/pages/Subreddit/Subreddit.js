@@ -16,7 +16,7 @@ export default class Subreddit extends React.Component {
   
   //load initial posts
   componentDidMount() {
-    this.loadPosts(this.props.params);
+    this.loadPosts(this.props.params, this.props.location.query);
 
     const bottom = document.getElementById('bottom');
 
@@ -29,34 +29,34 @@ export default class Subreddit extends React.Component {
 
   //check to see if params in url changed (page changed)
   componentWillReceiveProps(nextProps){
-    if(this.props.params.subreddit != nextProps.params.subreddit){
-      this.loadPosts(nextProps.params);
-    } 
+    if (this.props.location.pathname != nextProps.location.pathname || this.props.location.query != nextProps.location.query){
+      this.loadPosts(nextProps.params, nextProps.location.query);
+    }
   }
   
-  loadPosts(params){
+  loadPosts(params, query){
     const url = new queryParams();
     let subreddit = params.subreddit;
     typeof subreddit !== 'undefined' ? url.pushParam('r') : subreddit = '';
     url.pushParam(params.subreddit);
     url.pushParam(params.sort);
-    Object.keys(this.props.location.query).forEach((key,index) => {
-      url.pushQueryParam(key, this.props.location.query[key]);
+    Object.keys(query).forEach((key,index) => {
+      url.pushQueryParam(key, query[key]);
     });
     
     this.props.actions.subreddit.setSubreddit(subreddit);
     this.props.actions.subreddit.fetchPosts(url.toString());
   }
 
-  loadMorePosts(params){
+  loadMorePosts(params, query){
     if (this.props.subreddit.fetched){
       const url = new queryParams();
       let subreddit = params.subreddit;
       typeof subreddit !== 'undefined' ? url.pushParam('r') : subreddit = '';
       url.pushParam(params.subreddit);
       url.pushParam(params.sort);
-      Object.keys(this.props.location.query).forEach((key,index) => {
-        url.pushQueryParam(key, this.props.location.query[key]);
+      Object.keys(query).forEach((key,index) => {
+        url.pushQueryParam(key, query[key]);
       });
       const name = this.props.subreddit.posts[this.props.subreddit.posts.length - 1].data.name;
       url.pushQueryParam('after', name);
@@ -71,7 +71,7 @@ export default class Subreddit extends React.Component {
 
   scrollListener = () => {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight && !this.props.subreddit.fetchingMore) {
-      this.loadMorePosts(this.props.params);
+      this.loadMorePosts(this.props.params, this.props.location.query);
     }
   }
 
@@ -89,7 +89,7 @@ export default class Subreddit extends React.Component {
         <div class="container-fluid">
           <div class="row Subreddit-row">
             <div class="col-md-10 Main-columns">
-              <Sortbar theme={theme}/>
+              <Sortbar theme={theme} subreddit={this.props.subreddit.subreddit}/>
               {errorFetching ? <div>Error fetching posts</div> : ""}
               {fetched ? posts.map(this.insertPosts) : <Loading theme={theme}/>}
               {fetchingMore && !fetching ? <Loading theme={theme}/>: null}
