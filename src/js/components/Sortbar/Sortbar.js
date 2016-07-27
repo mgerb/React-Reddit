@@ -14,12 +14,17 @@ export default class Sortbar extends React.Component {
             <Link class={"Sortbar-links " + this.props.theme.font} to={subreddit + "/new"}>new</Link>
             <Link class={"Sortbar-links " + this.props.theme.font} to={subreddit + "/rising"}>rising</Link>
             <Link class={"Sortbar-links " + this.props.theme.font} to={subreddit + "/controversial"}>controversial</Link>
+            <div class="Sortbar-dropdown">
             <Link class={"Sortbar-links " + this.props.theme.font} to={subreddit + "/top?sort=top&t=all"}>top</Link>
-              <Link class={"Sortbar-links Sortbar-sort " + this.props.theme.font} to={subreddit + "/top?sort=top&t=all"}>all</Link>
-              <Link class={"Sortbar-links Sortbar-sort " + this.props.theme.font} to={subreddit + "/top?sort=top&t=year"}>year</Link>
-              <Link class={"Sortbar-links Sortbar-sort " + this.props.theme.font} to={subreddit + "/top?sort=top&t=month"}>month</Link>
-              <Link class={"Sortbar-links Sortbar-sort " + this.props.theme.font} to={subreddit + "/top?sort=top&t=week"}>week</Link>
-              <Link class={"Sortbar-links Sortbar-sort " + this.props.theme.font} to={subreddit + "/top?sort=top&t=day"}>day</Link>
+            <ul class={"Sortbar-dropdown-menu " + this.props.theme.module}>
+              <Link class={this.props.theme.font} to={subreddit + "/top?sort=top&t=all"}><li>all</li></Link>
+              <Link class={this.props.theme.font} to={subreddit + "/top?sort=top&t=year"}><li>year</li></Link>
+              <Link class={this.props.theme.font} to={subreddit + "/top?sort=top&t=month"}><li>month</li></Link>
+              <Link class={this.props.theme.font} to={subreddit + "/top?sort=top&t=week"}><li>week</li></Link>
+              <Link class={this.props.theme.font} to={subreddit + "/top?sort=top&t=day"}><li>day</li></Link>
+              <Link class={this.props.theme.font} to={subreddit + "/top?sort=top&t=hour"}><li>hour</li></Link>
+            </ul>
+            </div>
           </div>
         </div>
     );

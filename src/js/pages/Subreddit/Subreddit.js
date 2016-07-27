@@ -70,11 +70,21 @@ export default class Subreddit extends React.Component {
   }
 
   scrollListener = () => {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight && !this.props.subreddit.fetchingMore) {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight && !this.props.subreddit.fetchingMore && this.props.app.autoLoad) {
       this.loadMorePosts(this.props.params, this.props.location.query);
     }
   }
-
+  
+  loadMoreButton = () => {
+    return (
+        <div class="row text-center">
+          <button class={"Subreddit-loadMoreButton btn " + this.props.app.theme.module} onClick={() => {this.loadMorePosts(this.props.params, this.props.location.query)}}>
+            <span class={this.props.app.theme.font}>Load More</span>
+          </button>
+        </div>
+      )
+  }
+  
   render() {
     const errorFetching = this.props.subreddit.errorFetching;
     const posts = this.props.subreddit.posts;
@@ -82,7 +92,10 @@ export default class Subreddit extends React.Component {
     const fetching = this.props.subreddit.fetching;
     const fetchingMore = this.props.subreddit.fetchingMore;
     const theme = this.props.app.theme;
-    const toggleTheme = this.props.actions.app.toggleTheme;
+    
+    //copy props and actions for side bar
+    const sideBarProps = Object.assign({}, this.props.app);
+    const sideBarActions = Object.assign({}, this.props.actions.app);
     
     return (
       <div>
@@ -92,10 +105,11 @@ export default class Subreddit extends React.Component {
               <Sortbar theme={theme} subreddit={this.props.subreddit.subreddit}/>
               {errorFetching ? <div>Error fetching posts</div> : ""}
               {fetched ? posts.map(this.insertPosts) : <Loading theme={theme}/>}
-              {fetchingMore && !fetching ? <Loading theme={theme}/>: null}
+              {fetchingMore && !fetching ? <Loading theme={theme}/>: ""}
+              {!this.props.app.autoLoad ? this.loadMoreButton(): ""}
             </div>
             <div class="col-md-2 Main-columns">
-              <Sidebar toggleTheme={toggleTheme} theme={theme}/>
+              <Sidebar actions={sideBarActions} app={sideBarProps}/>
             </div>
           </div>
         </div>

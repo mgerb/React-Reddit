@@ -9,6 +9,10 @@
     text-align: center;
 }
 
+.Footer a:hover{
+    color: $linkColor;    
+}
+
 .Footer-text {
     padding-left: 1rem;
     padding-right: 1rem;

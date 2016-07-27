@@ -21,6 +21,10 @@ export default class CommentsPage extends React.Component {
 	}
 	
   render() {
+    //copy props and actions for side bar
+    const sideBarProps = Object.assign({}, this.props.app);
+    const sideBarActions = Object.assign({}, this.props.actions.app);
+    
     return (
       <div>
         <div class="container-fluid">
@@ -30,7 +34,7 @@ export default class CommentsPage extends React.Component {
               {this.props.comments.fetched ? <Comments comments={this.props.comments.comments} alt={false} theme={this.props.app.theme}/> : <Loading theme={this.props.app.theme}/>}
             </div>
             <div class="col-md-2 Main-columns">
-              <Sidebar toggleTheme={this.props.actions.app.toggleTheme} theme={this.props.app.theme}/>
+              <Sidebar actions={sideBarActions} app={sideBarProps}/>
             </div>
           </div>
         </div>

@@ -14,13 +14,14 @@ The goal of this project is to make a Reddit client that automatically updates p
 	- ~~allow users to change color scheme~~
 		- ~~store in browser~~
 	- fix state on redditpost.js
-	- Add options to side bar
-	- select amount of posts to load per page
+	- ~~Add options to side bar~~ - in progress
+	    - select amount of posts to load per page
+	    - ~~toggle auto paging~~
 	- quick view of posts and photos
 	- live updating posts/comments
 	- ~~top bar to filter posts~~
 	    - ~~add filter menu~~
-	    - more css - change to drop down menu
+	    - ~~more css - change to drop down menu~~
 	    - active link functionality
 
 - comments page

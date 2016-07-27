@@ -15,28 +15,36 @@ const darkTheme = {
 }
 
 //defaults
-const defaults = {
-    theme : lightTheme
+const defaultAppState = {
+    theme : lightTheme,
+    autoLoad : true
 }
 
 function initDefaults(){
-    const theme = localStorage.getItem('theme');
+    let appState = localStorage.getItem('appState');
     
-    if(theme !== null){
-        defaults.theme = JSON.parse(theme);
-    }
-    return defaults;
+    return appState !== null ? JSON.parse(appState) : defaultAppState;
 }
 
 export default function(state = initDefaults(), action) {
+    
+    let newState;
     switch (action.type) {
         case types.TOGGLE_THEME:
             const theme = state.theme.background === 'light' ? darkTheme : lightTheme;
-            localStorage.setItem('theme', JSON.stringify(theme));
-            
-            return Object.assign({}, state, {
+            newState = Object.assign({}, state, {
                 theme: Object.assign({}, state.theme, theme)
             });
+            localStorage.setItem('appState', JSON.stringify(newState));
+            return newState;
+        
+        case types.AUTO_LOAD:
+            const temp = !state.autoLoad;
+            newState = Object.assign({}, state, {
+                    autoLoad: temp
+                });
+            localStorage.setItem('appState', JSON.stringify(newState));
+            return newState;
     }
 
     return state;

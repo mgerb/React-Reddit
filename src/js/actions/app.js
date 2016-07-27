@@ -5,3 +5,9 @@ export function toggleTheme() {
         type: types.TOGGLE_THEME
     }
 }
+
+export function toggleAutoLoad(){
+    return {
+        type: types.AUTO_LOAD
+    }
+}
