@@ -106,7 +106,7 @@ export default class Subreddit extends React.Component {
               {errorFetching ? <div>Error fetching posts</div> : ""}
               {fetched ? posts.map(this.insertPosts) : <Loading theme={theme}/>}
               {fetchingMore && !fetching ? <Loading theme={theme}/>: ""}
-              {!this.props.app.autoLoad ? this.loadMoreButton(): ""}
+              {!this.props.app.autoLoad && fetched ? this.loadMoreButton(): ""}
             </div>
             <div class="col-md-2 Main-columns">
               <Sidebar actions={sideBarActions} app={sideBarProps}/>
