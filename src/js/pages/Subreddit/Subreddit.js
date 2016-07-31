@@ -78,9 +78,9 @@ export default class Subreddit extends React.Component {
   loadMoreButton = () => {
     return (
         <div class="row text-center">
-          <button class={"Subreddit-loadMoreButton btn " + this.props.app.theme.module} onClick={() => {this.loadMorePosts(this.props.params, this.props.location.query)}}>
-            <span class={this.props.app.theme.font}>Load More</span>
-          </button>
+            <a class={this.props.app.theme.font} onClick={() => {this.loadMorePosts(this.props.params, this.props.location.query)}}>
+              <i class="fa fa-chevron-down fa-2 Subreddit-loadMoreButton" aria-hidden="true"></i>
+            </a>
         </div>
       )
   }
