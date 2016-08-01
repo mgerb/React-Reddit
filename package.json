@@ -1,8 +1,8 @@
 {
-  "name": "SReddit",
+  "name": "React Reddit",
   "version": "1.0.0",
   "description": "A Reddit client built with React and Redux",
-  "repository": "https://github.com/mgerb42/sreddit",
+  "repository": "https://github.com/mgerb42/react-reddit",
   "main": "webpack.config.js",
   "dependencies": {
     "axios": "^0.12.0",
