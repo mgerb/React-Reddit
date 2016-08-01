@@ -40,7 +40,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "webpack-dev-server --content-base public --inline --hot --history-api-fallback",
+    "dev": "webpack-dev-server --content-base dist --inline --hot --history-api-fallback",
     "c9": "webpack-dev-server --port $PORT --host $IP --hot --content-base dist --history-api-fallback",
     "prod-linux": "export NODE_ENV=production && webpack -p",
     "prod-windows": "set NODE_ENV=production & webpack -p"
