@@ -1,11 +1,10 @@
-# sreddit
-This is a Reddit client that I am developing to learn both React and Redux as well as ES6.
+# React Reddit
+This is a personal project that I am working on to learn React, Redux, and ES6.
 
-[Current development site located here](https://sreddit-mgerb42.c9users.io/) (may or may not be running)
+[Current site located here](http://reactreddit.com)
 
 ## Goal
 The goal of this project is to make a Reddit client that automatically updates posts and shows live animations.
-
 
 ## ToDo
 
@@ -44,8 +43,8 @@ The goal of this project is to make a Reddit client that automatically updates p
 	- refactor theme css
     
 - server side
-	- set up backend with Go
-	- run on app engine
+	- ~~set up backend with Go~~
+	- ~~run on app engine~~
 
 - ...more to come
 

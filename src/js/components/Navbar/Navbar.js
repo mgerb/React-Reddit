@@ -15,7 +15,7 @@ export default class Navbar extends React.Component {
     return (
           <nav class={"Navbar-navbar " + module}>
             <div class="Navbar-container">
-                <Link id="frontpage" to="/" class={"Navbar-brand Navbar-text Navbar-left " + font + " " + active}>SReddit</Link>
+                <Link id="frontpage" to="/" class={"Navbar-brand Navbar-text Navbar-left " + font + " " + active}>React Reddit</Link>
 
                 {defaultSubreddits.map((subreddit, index) => {
                   this.props.subreddit.toUpperCase() == subreddit.toUpperCase() ? active = 'active' : active = '';
@@ -24,7 +24,7 @@ export default class Navbar extends React.Component {
                 })}
                 
                 <div class="Navbar-text Navbar-right">
-                  <a href="https://github.com/mgerb/sreddit" class={font} target="_blank">
+                  <a href="https://github.com/mgerb/react-reddit" class={font} target="_blank">
                     <i class="fa fa-github fa-2 " aria-hidden="true"></i>
                   </a>
                 </div>
