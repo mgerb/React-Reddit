@@ -9,13 +9,13 @@ export default class Navbar extends React.Component {
     
     const module = this.props.theme.module;
     const font = this.props.theme.font;
-    const defaultSubreddits = ['all', 'multicopter', 'fpv',];
+    const defaultSubreddits = ['all'];
     let active = this.props.subreddit === '' ? 'active' : '';
     
     return (
           <nav class={"Navbar-navbar " + module}>
             <div class="Navbar-container">
-                <Link id="frontpage" to="/" class={"Navbar-brand Navbar-text Navbar-left " + font + " " + active}>React Reddit</Link>
+                <Link id="frontpage" to="/" class={"Navbar-brand Navbar-text Navbar-left " + font + " " + active}>RReddit</Link>
 
                 {defaultSubreddits.map((subreddit, index) => {
                   this.props.subreddit.toUpperCase() == subreddit.toUpperCase() ? active = 'active' : active = '';
