@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from 'react-router';
 import moment from 'moment';
+import {getImageLink} from '../utils/regex';
 
 import "./RedditPost.scss";
 
@@ -45,7 +46,6 @@ export default class RedditPost extends React.Component {
   }
 
   render() {
-    
     return (
       <div class={"row RedditPost-row " + this.props.theme.module}>
 

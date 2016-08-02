@@ -49,7 +49,6 @@ export function fetchPosts(path, params) {
         return fetch(`https://www.reddit.com${path}`)
             .then(response => response.json())
             .then(json => {
-                console.log(json);
                 json.error === 404 ? dispatch(errorFetching(true)) : dispatch(initPosts(json.data.children));
             })
             .catch(error => {
