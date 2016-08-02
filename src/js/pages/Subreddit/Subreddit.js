@@ -1,7 +1,6 @@
 //react imports
 import React from 'react';
 import { Link } from 'react-router';
-import 'whatwg-fetch';
 
 //component imports
 import RedditPost from '../../components/RedditPost/RedditPost';

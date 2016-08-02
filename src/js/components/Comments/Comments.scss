@@ -14,11 +14,14 @@
     border-radius: $borderRadius;
     padding-bottom: .3rem;
     padding-top: .5rem;
-    margin-top: 5px;
+}
+
+.Comments-comment + .Comments-comment{
+    margin-top: 0.5rem;
 }
 
 .Comments-score{
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .Comments-timestamp{
