@@ -52,14 +52,20 @@ export default class RedditPost extends React.Component {
 
         <div class="col-md-1">
           <div class="RedditPost-score-box">
-              <span class="RedditPost-score">{this.state.ups}</span>
+              <h1>{this.state.ups}</h1>
           </div>
         </div>
 
         <div class="col-sm-9">
           {this.renderThumbnail()}
-          <span class="RedditPost-title"><a href={this.state.url}>{this.state.title}</a></span> <span class="RedditPost-domain"> ({this.state.domain})</span>
-          <p>submitted {this.getTimeCreated()} ago by <a href={"https://reddit.com/user/" + this.state.author} target="_blank">u/{this.state.author}</a> to <Link to={"/r/" + this.state.subreddit}>r/{this.state.subreddit}</Link></p>
+          <a href={this.state.url}>{this.state.title}</a><span class="RedditPost-domain"> ({this.state.domain})</span>
+          <p>
+              <span>submitted {this.getTimeCreated()}</span>
+              <span> ago by </span>
+              <a class="RedditPost-secondary" href={"https://reddit.com/user/" + this.state.author} target="_blank">u/{this.state.author}</a>
+              <span> to </span>
+              <Link class="RedditPost-secondary" to={"/r/" + this.state.subreddit}>r/{this.state.subreddit}</Link>
+          </p>
           <Link to={this.state.permalink}>{this.state.num_comments} comments</Link>
         </div>
       </div>

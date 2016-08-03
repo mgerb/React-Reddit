@@ -10,6 +10,10 @@
     border-color: $borderDark !important;
 }
 
+.dark-module a{
+    color: $linkDark;
+}
+
 .dark-font {
     color: $fontDark;
 }
@@ -32,6 +36,10 @@
 .light-module {
     background-color: $modulesLight;
     border-color: $borderLight !important;
+}
+
+.light-module a {
+ color: $linkLight;   
 }
 
 .light-font {

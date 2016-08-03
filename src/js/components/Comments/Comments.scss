@@ -27,3 +27,12 @@
 .Comments-timestamp{
     font-size: 12px;
 }
+
+//reverse link colors for special links
+.Comments-comment a{
+    color: $linkHoverColor !important;
+}
+
+.Comments-comment a:hover{
+    color: $linkColor !important;
+}
