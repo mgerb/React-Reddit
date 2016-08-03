@@ -15,7 +15,7 @@ body {
 }
 
 .active {
-    color: $linkHoverColor;
+    color: $linkHoverColor !important;
 }
 
 .row {
