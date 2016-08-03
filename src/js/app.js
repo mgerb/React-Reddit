@@ -11,15 +11,14 @@ import * as app from './actions/app';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 
+import "../assets/animate.min.css";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
-
 import '../sass/main.scss';
 
 class Index extends Component {
   
   render() {
-
     //set background color of page
     document.body.className = this.props.app.theme.background;
     

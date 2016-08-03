@@ -24,6 +24,10 @@ body {
     margin-left: 0;
 }
 
+.wow {
+    visibility: hidden;
+}
+
 .container-fluid {
     padding-right: $mainColumnPadding;
     padding-left: $mainColumnPadding;

@@ -1,6 +1,7 @@
 //react imports
 import React from 'react';
 import { Link } from 'react-router';
+import WOW from 'wowjs/dist/wow.js';
 
 //component imports
 import RedditPost from '../../components/RedditPost/RedditPost';
@@ -12,6 +13,19 @@ import queryParams from '../../utils/queryParams';
 import './Subreddit.scss';
 
 export default class Subreddit extends React.Component {
+  
+  constructor(){
+    super();
+    
+    this.wow = new WOW({
+                      boxClass:     'wow',      // default
+                      animateClass: 'animated', // default
+                      offset:       0,          // default
+                      mobile:       true,       // default
+                      live:         true        // default
+                    });
+    this.wow.init();
+  }
   
   //load initial posts
   componentDidMount() {
@@ -84,6 +98,12 @@ export default class Subreddit extends React.Component {
       )
   }
   
+  syncWow = () => {
+    setTimeout(() => {
+      this.wow.sync();
+    }, 1);
+  }
+  
   render() {
     const errorFetching = this.props.subreddit.errorFetching;
     const posts = this.props.subreddit.posts;
@@ -113,6 +133,7 @@ export default class Subreddit extends React.Component {
           </div>
         </div>
         <div id="bottom"></div>
+        {fetched ? this.syncWow() : ""}
       </div>
     );
   }

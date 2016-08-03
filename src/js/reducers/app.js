@@ -13,7 +13,7 @@ const darkTheme = {
         font: "dark-font",
         altComment: "dark-alt-comment"
 }
-
+                
 //defaults
 const defaultAppState = {
     theme : lightTheme,

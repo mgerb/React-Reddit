@@ -21,7 +21,7 @@ export default class RedditPost extends React.Component {
       
       const altComment = this.props.alt ? this.props.theme.altComment : "";
 
-      return (<div class={`col-xs-12 Comments-comment ${this.props.theme.module} ${altComment}`} key={index}>
+      return (<div class={`col-xs-12 Comments-comment wow fadeInUp ${this.props.theme.module} ${altComment}`} key={index} data-wow-duration=".5s">
                 <p>
                   <a href={"https://reddit.com/user/" + author} target="_blank">{author}</a>
                     <span class="Comments-score"> {ups} points </span>

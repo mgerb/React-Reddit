@@ -1,12 +1,13 @@
 import React from "react";
 import {Link} from 'react-router';
 import moment from 'moment';
-import {getImageLink} from '../utils/regex';
+import WOW from 'wowjs/dist/wow.js';
 
+import {getImageLink} from '../utils/regex';
 import "./RedditPost.scss";
 
 export default class RedditPost extends React.Component {
-
+  
   componentWillMount(){
 
     const post = this.props.post.data;
@@ -30,9 +31,9 @@ export default class RedditPost extends React.Component {
       subreddit_id : post.subreddit_id,
       url : post.url
     });
-
+    
   }
-
+  
   renderThumbnail() {
     if (this.state.thumbnail != "" && this.state.thumbnail != "self" && this.state.thumbnail != "nsfw"){
       return <img class="img-responsive pull-left" src={this.state.thumbnail} alt={this.state.thumbnail}/>
@@ -47,7 +48,7 @@ export default class RedditPost extends React.Component {
 
   render() {
     return (
-      <div class={"row RedditPost-row " + this.props.theme.module}>
+      <div class={"row RedditPost-row wow fadeInUp " + this.props.theme.module} data-wow-duration="0.5s">
 
         <div class="col-md-1">
           <div class="RedditPost-score-box">

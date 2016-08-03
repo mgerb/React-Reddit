@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
+import WOW from 'wowjs/dist/wow.js';
 
 import Loading from '../../components/Loading/Loading';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -9,7 +10,20 @@ import RedditPost from '../../components/RedditPost/RedditPost';
 import "./CommentsPage.scss";
 
 export default class CommentsPage extends React.Component {
-	
+  
+	constructor(){
+    super();
+    
+    this.wow = new WOW({
+                      boxClass:     'wow',      // default
+                      animateClass: 'animated', // default
+                      offset:       0,          // default
+                      mobile:       true,       // default
+                      live:         true        // default
+                    });
+    this.wow.init();
+  }
+  
 	componentDidMount(){
 		const actions = this.props.actions.comments;
     const params = this.props.params;
@@ -20,6 +34,12 @@ export default class CommentsPage extends React.Component {
     actions.fetchComments(path);
 	}
 	
+	syncWow = () => {
+    setTimeout(() => {
+      this.wow.sync();
+    }, 1);
+  }
+  
   render() {
     //copy props and actions for side bar
     const sideBarProps = Object.assign({}, this.props.app);
@@ -38,6 +58,7 @@ export default class CommentsPage extends React.Component {
             </div>
           </div>
         </div>
+        {this.props.comments.fetched ? this.syncWow() : ""}
       </div>
     );
   }
