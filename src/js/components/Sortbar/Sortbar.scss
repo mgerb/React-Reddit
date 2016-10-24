@@ -1,0 +1,76 @@
+@import '../../../sass/variables.scss';
+
+.Sortbar {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: 4rem;
+    margin-bottom: .5rem;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+}
+
+.Sortbar a:focus,
+.Sortbar a:hover {
+    color: $linkFocusColor !important;
+    outline: none;
+    text-decoration: none;
+}
+
+.Sortbar-links {
+    padding-right: .5em;
+    padding-left: .5em;
+}
+
+.Sortbar-sort{
+    font-size: 10px;
+}
+
+.Sortbar-dropdown:hover ul,
+.Sortbar-dropdown-menu:hover{
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+
+.Sortbar-dropdown{
+    display: inline-block;
+    width: 100px;
+}
+
+.Sortbar-dropdown-menu{
+    width: 6rem;
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    padding-left: 0;
+    list-style: none;
+    text-align: center;
+    
+    opacity: 0;
+    -webkit-transition: visibility 0.3s, opacity 0.3s ease-in-out;
+    -moz-transition: visibility 0.3s, opacity 0.3s ease-in-out;
+    -ms-transition: visibility 0.3s, opacity 0.3s ease-in-out;
+    -o-transition: visibility 0.3s, opacity 0.3s ease-in-out;
+    transition: visibility 0.3s, opacity 0.3s ease-in-out;
+  
+    li{
+        padding: 3% 5%;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+    }
+    
+    li:first-child{
+        border-top: none;
+    }
+    
+    li:last-child{
+        border-bottom: none;
+    }
+    
+    li:hover{
+        background: linear-gradient(#eee,#ddd);
+    }
+    
+}

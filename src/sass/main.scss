@@ -1,0 +1,87 @@
+@import './variables.scss';
+@import './theme.scss';
+
+html {
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: $backgroundColor;
+    margin-bottom: $footerHeight;
+    font-family: 'Roboto Slab', serif;
+}
+
+.active {
+    color: $linkHoverColor !important;
+}
+
+.row {
+    border-radius: $borderRadius;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.wow {
+    visibility: hidden;
+}
+
+.container-fluid {
+    padding-right: $mainColumnPadding;
+    padding-left: $mainColumnPadding;
+}
+
+.Main-columns {
+    padding-right: $mainColumnPadding;
+    padding-left: $mainColumnPadding;
+}
+
+.text-center {
+    text-align: center;
+}
+
+label {
+    font-weight: 500;
+}
+
+a {
+    color: $linkColor;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $linkHoverColor;
+    text-decoration: none;
+}
+
+a:focus {
+    text-decoration: none;
+    color: $linkHoverColor;
+}
+
+//font awesome sizes
+.fa-1 {
+    font-size: 1em;
+}
+
+.fa-2 {
+    font-size: 2em;
+}
+
+.fa-3 {
+    font-size: 3em;
+}
+
+.fa-4 {
+    font-size: 4em;
+}
+
+.fa-5 {
+    font-size: 5em;
+}
+
+.fa-6 {
+    font-size: 6em;
+}

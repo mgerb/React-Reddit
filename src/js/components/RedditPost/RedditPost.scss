@@ -1,0 +1,37 @@
+@import '../../../sass/variables.scss';
+
+.RedditPost-row {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    margin-bottom: .5rem;
+}
+
+.RedditPost-score-box {
+    text-align: center;
+    font-size: 2rem;
+    color: $scoreColor;
+    line-height: 5rem;
+}
+
+.img-responsive {
+    max-width: 10rem;
+    padding: 1rem;
+}
+
+.RedditPost-row span {
+    font-size: 1.2rem;
+}
+
+a.RedditPost-secondary{
+    color: $linkHoverColor;
+}
+
+a.RedditPost-secondary:hover{
+    color: $linkColor;
+}
+
+.RedditPost-title a:visited{
+    color: $linkVisitedColor;
+}

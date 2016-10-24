@@ -1,0 +1,16 @@
+@import '../../../sass/variables.scss';
+
+.Footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: $footerHeight;
+    text-align: center;
+}
+
+.Footer-text {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    line-height: $footerHeight;
+}

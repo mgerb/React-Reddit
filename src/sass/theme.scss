@@ -1,0 +1,57 @@
+@import './variables.scss';
+
+//dark theme
+.dark {
+    background-color: $backgroundDark;
+}
+
+.dark-module {
+    background-color: $modulesDark;
+    border-color: $borderDark !important;
+}
+
+.dark-module a{
+    color: $linkDark;
+}
+
+.dark-font {
+    color: $fontDark;
+}
+
+.dark-module span,
+.dark-module p,
+.dark-module label {
+    color: $fontDark;
+}
+
+.dark-alt-comment {
+    background-color: $darkAltComment;
+}
+
+//light theme
+.light {
+    background-color: $backgroundLight;
+}
+
+.light-module {
+    background-color: $modulesLight;
+    border-color: $borderLight !important;
+}
+
+.light-module a {
+ color: $linkLight;   
+}
+
+.light-font {
+    color: $fontLight;
+}
+
+.light-module span,
+.light-module p,
+.light-module label {
+    color: $fontLight;
+}
+
+.light-alt-comment{
+    background-color: $lightAltComment;
+}
