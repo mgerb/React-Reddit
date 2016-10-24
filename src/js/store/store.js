@@ -7,9 +7,11 @@ import logger from "redux-logger";
 
 import allReducers from '../reducers/allReducers';
 
+const debug = process.env.NODE_ENV !== "production";
+
 const defaultState = {};
 
-const middleware = applyMiddleware(thunkMiddleware, logger());
+const middleware = debug ? applyMiddleware(thunkMiddleware, logger()) : applyMiddleware(thunkMiddleware);
 
 const store = createStore(allReducers, defaultState, middleware);
 
